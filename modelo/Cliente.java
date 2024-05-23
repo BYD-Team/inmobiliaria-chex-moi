@@ -47,7 +47,6 @@ public class Cliente {
         this.correoElectronico = correoElectronico;
     }
 
-
     public void setClave(String clave) {
         this.clave = clave;
     }
