@@ -13,10 +13,10 @@ public class ClienteControlador {
         gestorBaseDeDatos = new GestorBaseDeDatos();
     }
 
-    public int registrarCliente(Cliente cliente) {
+    public int registrarCliente(Cliente cliente) throws SQLException {
         Connection conexion;
         PreparedStatement preparedStatement; 
-        String query = "INSERT INTO cliente (nombre, apellido_paterno, correo_electronico, clave) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO cliente (nombre, apellidoPaterno, correoElectronico, clave) VALUES (?, ?, ?, SHA2(?,256))";
         int filasAfectadas = 0;
 
         try {
@@ -32,6 +32,10 @@ public class ClienteControlador {
         
         } catch(SQLException sqlException) {
             sqlException.printStackTrace();
+            throw sqlException;
+        
+        } finally {
+            gestorBaseDeDatos.cerrarConexion();
         }
 
         return filasAfectadas;
