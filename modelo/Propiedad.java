@@ -8,6 +8,7 @@ public class Propiedad {
     private String dimensiones;
     private int habitaciones;
     private String patio;
+    private Direccion direccion;
 
     public Propiedad() {
         this.idPropiedad = 0;
@@ -17,6 +18,7 @@ public class Propiedad {
         this.dimensiones = "";
         this.habitaciones = 0;
         this.patio = "";
+        this.direccion = null;
     }
 
     public int getIdPropiedad() {
@@ -73,5 +75,13 @@ public class Propiedad {
 
     public void setPatio(String patio) {
         this.patio = patio;
+    }
+
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
     }
 }
