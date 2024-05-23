@@ -107,14 +107,17 @@ public class VentanaCrearCuentaControlador {
     public boolean validarNombre() {
         boolean esValido = true;
 
+        campoTextoNombre.setStyle("-fx-border-color: #777; -fx-background-color: transparent; -fx-text-fill: #fff;");
         nombreNoValido.setVisible(false);
 
         if (campoTextoNombre.getText().isEmpty()) {
+            campoTextoNombre.setStyle("-fx-border-color: red; -fx-background-color: transparent; -fx-text-fill: #fff");
             nombreNoValido.setText("Campo Vacío");  
             nombreNoValido.setVisible(true);
             esValido = false;
 
         } else if (!validateSentence(campoTextoNombre.getText())) {
+            campoTextoNombre.setStyle("-fx-border-color: red; -fx-background-color: transparent; -fx-text-fill: #fff");
             nombreNoValido.setText("Datos inválidos");
             nombreNoValido.setVisible(true);
             esValido = false;
@@ -126,14 +129,17 @@ public class VentanaCrearCuentaControlador {
     public boolean validarApellidoPaterno() {
         boolean esValido = true;
 
+        campoTextoApellidoPaterno.setStyle("-fx-border-color: #777; -fx-background-color: transparent; -fx-text-fill: #fff;");
         apellidoNoValido.setVisible(false);
 
         if (campoTextoApellidoPaterno.getText().isEmpty()) {
+            campoTextoApellidoPaterno.setStyle("-fx-border-color: red; -fx-background-color: transparent; -fx-text-fill: #fff;");
             apellidoNoValido.setText("Campo Vacío");
             apellidoNoValido.setVisible(true);
             esValido = false;
 
         } else if (!validateSentence(campoTextoApellidoPaterno.getText())) {
+            campoTextoApellidoPaterno.setStyle("-fx-border-color: red; -fx-background-color: transparent; -fx-text-fill: #fff;");
             apellidoNoValido.setText("Datos inválidos");
             apellidoNoValido.setVisible(true);
             esValido = false;
@@ -145,14 +151,17 @@ public class VentanaCrearCuentaControlador {
     public boolean validarCorreoElectronico() {
         boolean esValido = true;
 
+        campoTextoCorreoElectronico.setStyle("-fx-border-color: #777; -fx-background-color: transparent; -fx-text-fill: #fff;");
         correoNoValido.setVisible(false);
 
         if (campoTextoCorreoElectronico.getText().isEmpty()) {
+            campoTextoCorreoElectronico.setStyle("-fx-border-color: red; -fx-background-color: transparent; -fx-text-fill: #fff;");
             correoNoValido.setText("Campo Vacío");
             correoNoValido.setVisible(true);
             esValido = false;
 
         } else if (!validateEmail(campoTextoCorreoElectronico.getText())) {
+            campoTextoCorreoElectronico.setStyle("-fx-border-color: red; -fx-background-color: transparent; -fx-text-fill: #fff;");
             correoNoValido.setText("Correo no válido");
             correoNoValido.setVisible(true);
             esValido = false;
@@ -164,14 +173,17 @@ public class VentanaCrearCuentaControlador {
     public boolean validarClave() {
         boolean esValido = true;
 
+        campoTextoClave.setStyle("-fx-border-color: #777; -fx-background-color: transparent; -fx-text-fill: #fff;");
         claveNoValida.setVisible(false);
 
         if (campoTextoClave.getText().isEmpty()) {
+            campoTextoClave.setStyle("-fx-border-color: red; -fx-background-color: transparent; -fx-text-fill: #fff;");
             claveNoValida.setText("Campo Vacío");
             claveNoValida.setVisible(true);
             esValido = false;
 
         } else if (!validateSentence(campoTextoClave.getText())) {
+            campoTextoClave.setStyle("-fx-border-color: red; -fx-background-color: transparent; -fx-text-fill: #fff;");
             claveNoValida.setText("Datos inválidos");
             claveNoValida.setVisible(true);
             esValido = false;
