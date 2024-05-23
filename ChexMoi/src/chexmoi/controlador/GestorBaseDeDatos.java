@@ -8,9 +8,9 @@ import java.sql.SQLTimeoutException;
 public class GestorBaseDeDatos {    
     private Connection conexion;
 
-    private final String BASE_DATOS_URL = "jdbc:mysql://localhost:3306/mydb";
-    private final String BASE_DATOS_USUARIO = "root";
-    private final String BASE_DATOS_CONTRASENIA = "Yael2004";
+    private final String BASE_DATOS_URL = "jdbc:mysql://localhost:3306/chexmoi";
+    private final String BASE_DATOS_USUARIO = "usuario_chexmoi";
+    private final String BASE_DATOS_CONTRASENIA = "u$9Hxt7Wc*";
 
     public GestorBaseDeDatos() {
         
