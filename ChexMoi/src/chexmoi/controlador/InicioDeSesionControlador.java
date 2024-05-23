@@ -1,7 +1,9 @@
 package chexmoi.controlador;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
+import chexmoi.modelo.Cliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,12 +36,34 @@ public class InicioDeSesionControlador {
     private Label passwordLabel;
 
     @FXML
-    private Button iniciarSesionButton;
+    private Button iniciarSesionButton; 
 
     @FXML
     private void iniciarSesion(ActionEvent event) {
         Stage stage = (Stage) iniciarSesionButton.getScene().getWindow();
-        abrirClienteMenuPrincipal(stage);
+        Cliente cliente = obtenerCliente(mailTextField.getText(), passwordPasswordField.getText());
+        
+        if (cliente.getIdCliente() != 0) {
+            abrirClienteMenuPrincipal(stage);
+
+        } else if (mailTextField.getText().equals("inmobiliario@gmail.com")) {
+            //abrirAgenteInmobiliarioMainMenu
+        }
+
+    }
+
+    public Cliente obtenerCliente(String correo, String clave) {
+        Cliente cliente = new Cliente();
+        ClienteControlador clienteControlador = new ClienteControlador();
+
+        try {
+            cliente = clienteControlador.obtenerCliente(correo, clave);
+
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+
+        return cliente;
     }
 
     private void abrirClienteMenuPrincipal(Stage stage) {
