@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="clienteMenuPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox spacing="20.0" style="-fx-border-style: hidden hidden solid hidden;" BorderPane.alignment="CENTER">
          <children>
@@ -19,7 +19,7 @@
                </image>
             </ImageView>
             <HBox HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#abrirPropiedades" style="-fx-background-color: transparent;" text="Propiedades" wrapText="true">
+            <Button mnemonicParsing="false" onAction="#abrirSeccionPropiedades" style="-fx-background-color: transparent;" text="Propiedades" wrapText="true">
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
@@ -31,7 +31,7 @@
                </font>
             </Button>
             <HBox HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#abrirFavoritos" style="-fx-background-color: transparent;" text="Favoritos" wrapText="true">
+            <Button mnemonicParsing="false" onAction="#abrirSeccionFavoritos" style="-fx-background-color: transparent;" text="Favoritos" wrapText="true">
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
@@ -43,7 +43,7 @@
                </font>
             </Button>
             <HBox HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#abrirMensajes" style="-fx-background-color: transparent;" text="Mensajes" wrapText="true">
+            <Button mnemonicParsing="false" onAction="#abrirSeccionMensajes" style="-fx-background-color: transparent;" text="Mensajes" wrapText="true">
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
@@ -55,7 +55,7 @@
                </font>
             </Button>
             <HBox HBox.hgrow="ALWAYS" />
-            <ImageView fitHeight="60.0" fitWidth="60.0" onMouseClicked="#abrirPerfil" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="60.0" onMouseClicked="#abrirSeccionPerfil" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../recursos/UserIcon.png" />
                </image>
