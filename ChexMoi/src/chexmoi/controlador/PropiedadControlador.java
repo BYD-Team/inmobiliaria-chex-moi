@@ -1,4 +1,4 @@
-package controlador;
+package chexmoi.controlador;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelo.Propiedad;
+import chexmoi.modelo.Propiedad;
 
 public class PropiedadControlador {
     private GestorBaseDeDatos gestorBaseDeDatos;

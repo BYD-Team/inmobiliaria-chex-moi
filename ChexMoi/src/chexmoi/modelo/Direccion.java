@@ -1,4 +1,4 @@
-package modelo;
+package chexmoi.modelo;
 
 public class Direccion {
     private int idDireccion;

@@ -1,10 +1,10 @@
-package controlador;
+package chexmoi.controlador;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import modelo.Cliente;
+import chexmoi.modelo.Cliente;
 
 public class ClienteControlador {
     private GestorBaseDeDatos gestorBaseDeDatos;

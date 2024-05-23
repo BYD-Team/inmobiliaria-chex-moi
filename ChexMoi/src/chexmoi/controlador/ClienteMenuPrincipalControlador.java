@@ -1,4 +1,4 @@
-package controlador;
+package chexmoi.controlador;
 
 // import javafx.event.ActionEvent;
 // import javafx.scene.input.MouseEvent;

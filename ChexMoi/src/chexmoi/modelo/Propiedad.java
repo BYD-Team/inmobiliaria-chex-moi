@@ -1,4 +1,4 @@
-package modelo;
+package chexmoi.modelo;
 
 public class Propiedad {
     private int idPropiedad;

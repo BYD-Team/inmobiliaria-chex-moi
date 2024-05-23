@@ -1,4 +1,4 @@
-package controlador;
+package chexmoi.controlador;
 
 // import modelo.Cliente;
 

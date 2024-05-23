@@ -1,7 +1,5 @@
-package test;
-
-import controlador.ClienteControlador;
-import modelo.Cliente;
+import chexmoi.controlador.ClienteControlador;
+import chexmoi.modelo.Cliente;
 
 public class PruebasClienteControlador {
     
