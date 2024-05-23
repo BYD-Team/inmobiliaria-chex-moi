@@ -97,7 +97,7 @@ public class SeccionPropiedadesControlador {
         propiedadElemento.setSpacing(10);
         propiedadElemento.setMinWidth(400);
         propiedadElemento.setPadding(new Insets(10));
-        // propiedadElemento.setStyle("-fx-background-color: #f52;");
+        propiedadElemento.setStyle("-fx-border-color: #000;");
         propiedadElemento.getChildren().add(etiquetas);
         propiedadElemento.getChildren().add(contenedor);
 
