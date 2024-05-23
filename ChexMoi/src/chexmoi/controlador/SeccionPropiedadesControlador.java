@@ -97,7 +97,7 @@ public class SeccionPropiedadesControlador {
         propiedadElemento.setSpacing(10);
         propiedadElemento.setMinWidth(400);
         propiedadElemento.setPadding(new Insets(10));
-        propiedadElemento.setStyle("-fx-border-color: #000;");
+        propiedadElemento.setStyle("-fx-border-color: #777;");
         propiedadElemento.getChildren().add(etiquetas);
         propiedadElemento.getChildren().add(contenedor);
 
@@ -108,6 +108,7 @@ public class SeccionPropiedadesControlador {
         Label etiquetaLabel = new Label(etiqueta);
 
         etiquetaLabel.setFont(new Font("Arial", tamanoFuente));
+        etiquetaLabel.setStyle("-fx-text-fill: #fff");
 
         return etiquetaLabel;
     }
@@ -123,6 +124,8 @@ public class SeccionPropiedadesControlador {
     private Button crearBotonRentar(Propiedad propiedad) {
         Button botonRentar = new Button("Rentar");
 
+        botonRentar.setStyle("-fx-background-color: transparent; -fx-border-radius: 3px; -fx-border-color: #fff; -fx-text-fill: #fff");
+
         botonRentar.setOnAction(event ->{
             System.out.println(cliente.getNombre() + "Rentar");
         });
@@ -132,6 +135,8 @@ public class SeccionPropiedadesControlador {
 
     private Button crearBotonComprar(Propiedad propiedad) {
         Button botonComprar = new Button("Comprar");
+
+        botonComprar.setStyle("-fx-background-color: transparent; -fx-border-radius: 3px; -fx-border-color: #fff; -fx-text-fill: #fff");
 
         botonComprar.setOnAction(event -> {
             System.out.println(cliente.getNombre() + " Comprar");
