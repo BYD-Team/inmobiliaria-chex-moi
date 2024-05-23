@@ -7,10 +7,13 @@ import chexmoi.modelo.Cliente;
 import chexmoi.modelo.Propiedad;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -30,7 +33,7 @@ public class SeccionPropiedadesControlador {
     private CheckBox patioCheckBox;
 
     @FXML
-    private VBox resultadoBusqueda;
+    private FlowPane resultadoBusqueda;
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
@@ -44,6 +47,7 @@ public class SeccionPropiedadesControlador {
     @FXML
     private void initialize() {
         propiedadControlador = new PropiedadControlador();
+        mostrarPropiedades();
     }
 
     @FXML
@@ -58,34 +62,46 @@ public class SeccionPropiedadesControlador {
             resultadoBusqueda.getChildren().add(crearEtiqueta("No se encontraron propiedades", 20));
 
         } else {
-            propiedades.forEach(propiedad -> crearPropiedadElemento(propiedad));
+            for (Propiedad propiedad : propiedades) {
+                resultadoBusqueda.getChildren().add(crearPropiedadElemento(propiedad));
+            }
         }
     }
 
-    private void crearPropiedadElemento(Propiedad propiedad) {
+    private VBox crearPropiedadElemento(Propiedad propiedad) {
         VBox propiedadElemento = new VBox();
 
         VBox.setVgrow(propiedadElemento, Priority.ALWAYS);
 
         VBox etiquetas = new VBox();
 
+        etiquetas.setSpacing(10);
         etiquetas.getChildren().add(crearEtiqueta(propiedad.getNombre(), 20));
         etiquetas.getChildren().add(crearEtiqueta(propiedad.getDireccion().getColonia(), 16));
 
         HBox contenedor = new HBox();
 
+        contenedor.setSpacing(10);
+        contenedor.setAlignment(Pos.CENTER);
         contenedor.getChildren().add(crearEtiqueta(propiedad.getDimensiones(), 14));
         contenedor.getChildren().add(crearSeparador());
 
         HBox botones = new HBox();
 
+        botones.setSpacing(10);
         botones.getChildren().add(crearBotonRentar(propiedad));
         botones.getChildren().add(crearBotonComprar(propiedad));
 
         contenedor.getChildren().add(botones);
 
+        propiedadElemento.setSpacing(10);
+        propiedadElemento.setMinWidth(400);
+        propiedadElemento.setPadding(new Insets(10));
+        // propiedadElemento.setStyle("-fx-background-color: #f52;");
         propiedadElemento.getChildren().add(etiquetas);
         propiedadElemento.getChildren().add(contenedor);
+
+        return propiedadElemento;
     }
 
     private Label crearEtiqueta(String etiqueta, int tamanoFuente) {

@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="clienteMenuPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="clienteMenuPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chexmoi.controlador.ClienteMenuPrincipalControlador">
    <top>
       <HBox spacing="20.0" style="-fx-border-style: hidden hidden solid hidden;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-radius: 50;">
                <image>
-                  <Image url="@../recursos/ChexMoi.jpeg" />
+                  <Image url="@../../recursos/ChexMoi.jpeg" />
                </image>
             </ImageView>
             <HBox HBox.hgrow="ALWAYS" />
@@ -57,7 +57,7 @@
             <HBox HBox.hgrow="ALWAYS" />
             <ImageView fitHeight="60.0" fitWidth="60.0" onMouseClicked="#abrirSeccionPerfil" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../recursos/UserIcon.png" />
+                  <Image url="@../../recursos/UserIcon.png" />
                </image>
             </ImageView>
          </children>

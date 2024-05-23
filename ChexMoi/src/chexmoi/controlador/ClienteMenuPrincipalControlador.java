@@ -1,63 +1,67 @@
 package chexmoi.controlador;
 
-// import javafx.event.ActionEvent;
-// import javafx.scene.input.MouseEvent;
+import java.io.IOException;
+
+import chexmoi.modelo.Cliente;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 
 public class ClienteMenuPrincipalControlador {
-    // private static String mail;
-    // private static Cliente cliente;
+    private static String mail;
+    private static Cliente cliente;
 
-    // @FXML
-    // private BorderPane clienteMenuPrincipal;
+    @FXML
+    private BorderPane clienteMenuPrincipal;
 
-    // public static void setCliente(String mail) {
-    //     ClienteMenuPrincipalControlador.mail = mail;
-    // }
+    public static void setCliente(String mail) {
+        ClienteMenuPrincipalControlador.mail = mail;
+    }
 
-    // public static Cliente getCliente() throws DBException {
-    //     if (cliente == null) {
-    //         ClienteControlador clienteControlador = new ClienteControlador();
+    public static Cliente getCliente() {
+        if (cliente == null) {
+            ClienteControlador clienteControlador = new ClienteControlador();
 
-    //         cliente = clienteControlador.obtenerCliente(mail);
-    //     }
+            // cliente = clienteControlador.obtenerCliente(mail);
+        }
 
-    //     return cliente;
-    // }
+        return cliente;
+    }
 
-    // @FXML
-    // private void abrirSeccionPropiedades(ActionEvent event) {
-    //     try {
-    //         Cliente cliente = getCliente();
+    @FXML
+    private void abrirSeccionPropiedades(ActionEvent event) {
+        try {
+            Cliente cliente = getCliente();
 
-    //         FXMLLoader parent = new FXMLLoader(getClass().getResource("/vista/ClienteSeccionPropiedades.fxml"));
-    //         Parent root = parent.load();
+            FXMLLoader parent = new FXMLLoader(getClass().getResource("../vista/SeccionPropiedades.fxml"));
+            Parent root = parent.load();
 
-    //         ClienteSeccionPropiedadesControlador clienteSeccionPropiedadesControlador = parent.getController();
-    //         clienteSeccionPropiedadesControlador.setCliente(cliente);
+            SeccionPropiedadesControlador seccionPropiedadesControlador = parent.getController();
+            seccionPropiedadesControlador.setCliente(cliente);
 
-    //         clienteMenuPrincipal.setCenter(root);
+            clienteMenuPrincipal.setCenter(root);
 
-    //     } catch (DBException dbExcepcion) {
-    //         dbExcepcion.printStackTrace();
+        } catch (IOException ioExcepcion) {
+            ioExcepcion.printStackTrace();
+        }
+    }
 
-    //     } catch (IOException ioExcepcion) {
-    //         ioExcepcion.printStackTrace();
-    //     }
-    // }
+    @FXML
+    private void abrirSeccionMensajes(ActionEvent event) {
 
-    // @FXML
-    // private void abrirSeccionMensajes(ActionEvent event) {
+    }
 
-    // }
+    @FXML
+    private void abrirSeccionFavoritos(ActionEvent event) {
 
-    // @FXML
-    // private void abrirSeccionFavoritos(ActionEvent event) {
+    }
 
-    // }
+    @FXML
+    private void abrirSeccionPerfil(MouseEvent event) {
 
-    // @FXML
-    // private void abrirSeccionPerfil(MouseEvent event) {
-
-    // }
+    }
 
 }
