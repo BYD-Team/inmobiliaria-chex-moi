@@ -1,123 +1,127 @@
 package chexmoi.controlador;
 
-// import modelo.Cliente;
+import java.util.ArrayList;
+import java.util.List;
+
+import chexmoi.modelo.Cliente;
+import chexmoi.modelo.Propiedad;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class SeccionPropiedadesControlador {
-    // PropiedadControlador propiedadControlador;
-    // private Cliente cliente;
+    PropiedadControlador propiedadControlador;
+    private Cliente cliente;
 
-    // @FXML
-    // private ComboBox<String> preciosComboBox;
+    @FXML
+    private ComboBox<String> preciosComboBox;
 
-    // @FXML
-    // private ComboBox<String> habitacionesComboBox;
+    @FXML
+    private ComboBox<String> habitacionesComboBox;
 
-    // @FXML
-    // private CheckBox patioCheckBox;
+    @FXML
+    private CheckBox patioCheckBox;
 
-    // @FXML
-    // private HBox preciosComboBox;
+    @FXML
+    private VBox resultadoBusqueda;
 
-    // @FXML
-    // private VBox resultadoBusqueda;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
-    // @FXML
-    // private VBox resultadoBusqueda;
+    @FXML
+    private void buscarPropiedades(ActionEvent event) {
 
-    // public void setCliente(Cliente cliente) {
-    //     this.cliente = cliente;
-    // }
+    }
 
-    // @FXML
-    // private void buscarPropiedades(ActionEvent event) {
+    @FXML
+    private void initialize() {
+        propiedadControlador = new PropiedadControlador();
+    }
 
-    // }
+    @FXML
+    private void mostrarPropiedades() {
+        resultadoBusqueda.getChildren().clear();
 
-    // @FXML
-    // private void initialize() {
-    //     propiedadControlador = new PropiedadControlador();
-    // }
+        List<Propiedad> propiedades = new ArrayList<Propiedad>();
 
-    // @
-    // private void mostrarPropiedades() {
-    //     resultadoBusqueda.getChildren().clear();
-    //     List<Propiedad> propiedades = new ArrayList<>();
+        propiedades = propiedadControlador.obtenerPropiedades();
 
-    //     try {
-    //         propiedades = propiedadControlador.obtenerPropiedades();
+        if (propiedades.isEmpty()) {
+            resultadoBusqueda.getChildren().add(crearEtiqueta("No se encontraron propiedades", 20));
 
-    //     } catch (DBException dbExcepcion) {
-    //         dbExcepcion.printStackTrace();
-    //     }
+        } else {
+            propiedades.forEach(propiedad -> crearPropiedadElemento(propiedad));
+        }
+    }
 
-    //     if (propiedades.isEmpty()) {
-    //         resultadoBusqueda.getChildren().add(crearEtiqueta("No se encontraron propiedades", 20));
+    private void crearPropiedadElemento(Propiedad propiedad) {
+        VBox propiedadElemento = new VBox();
 
-    //     } else {
-    //         propiedades.forEach(propiedad -> crearPropiedadElemento(propiedad));
-    //     }
-    // }
+        VBox.setVgrow(propiedadElemento, Priority.ALWAYS);
 
-    // private void crearPropiedadElemento(Propiedad propiedad) {
-    //     VBox propiedadElemento = new VBox();
+        VBox etiquetas = new VBox();
 
-    //     VBox.setVgrow(propiedadElemento, Priority.ALWAYS);
+        etiquetas.getChildren().add(crearEtiqueta(propiedad.getNombre(), 20));
+        etiquetas.getChildren().add(crearEtiqueta(propiedad.getDireccion().getColonia(), 16));
 
-    //     VBox etiquetas = new VBox();
+        HBox contenedor = new HBox();
 
-    //     etiquetas.getChildren().add(crearEtiqueta(propiedad.getNombre(), 20));
-    //     etiquetas.getChildren().add(crearEtiqueta(propiedad.getColonia(), 16));
+        contenedor.getChildren().add(crearEtiqueta(propiedad.getDimensiones(), 14));
+        contenedor.getChildren().add(crearSeparador());
 
-    //     HBox contenedor = new HBox();
+        HBox botones = new HBox();
 
-    //     contenedor.getChildren().add(crearEtiqueta(propiedad.getDireccion().getDimensiones(), 14));
-    //     contenedor.getChildren().add(crearSeparador());
+        botones.getChildren().add(crearBotonRentar(propiedad));
+        botones.getChildren().add(crearBotonComprar(propiedad));
 
-    //     HBox botones = new HBox();
+        contenedor.getChildren().add(botones);
 
-    //     botones.getChildren().add(crearBotonRentar(propiedad));
-    //     botones.getChildren().add(crearBotonComprar(propiedad));
+        propiedadElemento.getChildren().add(etiquetas);
+        propiedadElemento.getChildren().add(contenedor);
+    }
 
-    //     contenedor.getChildren().add(botones);
+    private Label crearEtiqueta(String etiqueta, int tamanoFuente) {
+        Label etiquetaLabel = new Label(etiqueta);
 
-    //     propiedadElemento.getChildren().add(etiquetas);
-    //     propiedadElemento.getChildren().add(contenedor);
-    // }
+        etiquetaLabel.setFont(new Font("Arial", tamanoFuente));
 
-    // private Label crearEtiqueta(Stirng etiqueta, int tamanoFuente) {
-    //     Label etiquetaLabel = new Label(etiqueta);
+        return etiquetaLabel;
+    }
 
-    //     etiquetaLabel.setFont(new Font("Arial", tamanoFuente));
+    private HBox crearSeparador() {
+        HBox separador = new HBox();
 
-    //     return etiquetaLabel;
-    // }
+        HBox.setHgrow(separador, Priority.ALWAYS);
 
-    // private HBox crearSeparador() {
-    //     HBox separador = new HBox();
+        return separador;
+    }
 
-    //     HBox.setHgrow(separador, Priority.ALWAYS);
+    private Button crearBotonRentar(Propiedad propiedad) {
+        Button botonRentar = new Button("Rentar");
 
-    //     return separador;
-    // }
+        botonRentar.setOnAction(event ->{
+            System.out.println(cliente.getNombre() + "Rentar");
+        });
 
-    // private Button crearBotonRentar(Propiedad propiedad) {
-    //     Button botonRentar = new Button("Rentar");
+        return botonRentar;
+    }
 
-    //     botonRentar.setOnAction(event ->
-    //         System.out.println("Rentar");
-    //     );
+    private Button crearBotonComprar(Propiedad propiedad) {
+        Button botonComprar = new Button("Comprar");
 
-    //     return botonRentar;
-    // }
+        botonComprar.setOnAction(event -> {
+            System.out.println(cliente.getNombre() + " Comprar");
+        }); 
 
-    // private Button crearBotonComprar(Propiedad propiedad) {
-    //     Button botonComprar = new Button("Comprar");
-
-    //     botonComprar.setOnAction(event ->
-    //         System.out.println("Comprar");
-    //     );
-
-    //     return botonComprar;
-    // }
+        return botonComprar;
+    }
 }
 

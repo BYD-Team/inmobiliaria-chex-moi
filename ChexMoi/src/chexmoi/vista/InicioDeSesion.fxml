@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" style="-fx-background-color: #011120;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chexmoi.controlador.InicioDeSesionControlador">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #011120;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chexmoi.controlador.InicioDeSesionControlador">
    <children>
       <VBox alignment="CENTER" spacing="10.0" style="-fx-border-style: hidden solid hidden hidden; -fx-border-color: #444;" HBox.hgrow="ALWAYS">
          <children>
@@ -52,23 +52,54 @@
             </Label>
          </children>
       </VBox>
-      <VBox alignment="CENTER" spacing="50.0" HBox.hgrow="ALWAYS">
+      <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
          <children>
+            <VBox VBox.vgrow="ALWAYS" />
             <Label contentDisplay="CENTER" prefHeight="42.0" prefWidth="210.0" style="-fx-border-color: #fff; -fx-border-style: hidden hidden solid hidden; -fx-alignment: center;" text="INICIAR SESIÓN" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="mailTextField" maxWidth="400.0" prefHeight="17.0" prefWidth="165.0" promptText="Correo Electrónico" style="-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-style: hidden hidden solid hidden; -fx-border-color: #fff; -fx-prompt-text-fill: #aaa; -fx-text-fill: #fff;" />
-            <PasswordField fx:id="passwordPasswordField" maxWidth="400.0" prefHeight="25.0" prefWidth="165.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-style: hidden hidden solid hidden; -fx-border-color: #fff; -fx-prompt-text-fill: #aaa; -fx-text-fill: #fff;" />
+            <VBox VBox.vgrow="ALWAYS" />
+            <VBox maxHeight="48.0" maxWidth="500.0" spacing="4.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <TextField fx:id="mailTextField" prefHeight="17.0" prefWidth="165.0" promptText="Correo Electrónico" style="-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-style: hidden hidden solid hidden; -fx-border-color: #fff; -fx-prompt-text-fill: #aaa; -fx-text-fill: #fff;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="mailLabel" text="Etiqueta">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox VBox.vgrow="ALWAYS" />
+            <VBox maxHeight="48.0" maxWidth="500.0" spacing="4.0">
+               <children>
+                  <PasswordField fx:id="passwordPasswordField" prefHeight="25.0" prefWidth="165.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-style: hidden hidden solid hidden; -fx-border-color: #fff; -fx-prompt-text-fill: #aaa; -fx-text-fill: #fff;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </PasswordField>
+                  <Label fx:id="passwordLabel" text="Etiqueta">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox VBox.vgrow="ALWAYS" />
             <Button fx:id="iniciarSesionButton" mnemonicParsing="false" onAction="#iniciarSesion" prefWidth="104.0" style="-fx-background-color: transparent; -fx-border-radius: 3px; -fx-border-color: #fff;" text="Iniciar sesión" textAlignment="CENTER" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <VBox VBox.vgrow="ALWAYS" />
          </children>
          <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
          </padding>
       </VBox>
    </children>
