@@ -1,0 +1,17 @@
+{
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.project.sourcePaths": ["ChexMoi/src", "ChexMoi/test"],
+    "java.project.outputPath": "ChexMoi/bin",
+    "java.project.referencedLibraries": [
+        "ChexMoi/lib/javafx.base.jar",
+        "ChexMoi/lib/javafx.controls.jar",
+        "ChexMoi/lib/javafx.fxml.jar",
+        "ChexMoi/lib/javafx.graphics.jar",
+        "ChexMoi/lib/javafx.media.jar",
+        "ChexMoi/lib/javafx.swing.jar",
+        "ChexMoi/lib/javafx.web.jar",
+        "ChexMoi/lib/javafx-swt.jar",
+        "ChexMoi/lib/junit-4.13.2.jar",
+        "ChexMoi/lib/mysql-connector-j-8.3.0.jar",
+    ]
+}
