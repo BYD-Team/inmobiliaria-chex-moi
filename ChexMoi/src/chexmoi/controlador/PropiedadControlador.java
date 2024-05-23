@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import chexmoi.modelo.Direccion;
 import chexmoi.modelo.Propiedad;
 
 public class PropiedadControlador {
@@ -16,20 +17,28 @@ public class PropiedadControlador {
     }
 
     public List<Propiedad> obtenerPropiedades() {
-        Connection conexion = null;
-        PreparedStatement sentencia = null;
+        Connection conexion;
+        PreparedStatement sentencia;
+        ResultSet resultadoConsulta;
 
-        String consulta = "SELECT * FROM Propiedad";
+        String consulta = "";
+
+        consulta += "SELECT idPropiedad, nombre, precio, operacion, dimensiones, habitaciones, patio, ";
+        consulta += "idDireccion, calle, colonia, cp, numeroExterior, numeroInterior ";
+        consulta += "FROM Propiedad INNER JOIN Direccion ";
+        consulta += "ON idDireccion = Direccion_idDireccion";
+
         List<Propiedad> propiedades = new ArrayList<Propiedad>();
+        Propiedad propiedad;
+        Direccion direccion;
 
         try {
-            // conexion = gestorBaseDeDatos.abrirConexion();
+            conexion = gestorBaseDeDatos.obtenerConexion();
             sentencia = conexion.prepareStatement(consulta);
-
-            ResultSet resultadoConsulta = sentencia.executeQuery();
+            resultadoConsulta = sentencia.executeQuery();
 
             while (resultadoConsulta.next()) {
-                Propiedad propiedad = new Propiedad();
+                propiedad = new Propiedad();
 
                 propiedad.setIdPropiedad(resultadoConsulta.getInt("idPropiedad"));
                 propiedad.setNombre(resultadoConsulta.getString("nombre"));
@@ -39,6 +48,16 @@ public class PropiedadControlador {
                 propiedad.setHabitaciones(resultadoConsulta.getInt("habitaciones"));
                 propiedad.setPatio(resultadoConsulta.getString("patio"));
 
+                direccion = new Direccion();
+
+                direccion.setIdDireccion(resultadoConsulta.getInt("idDireccion"));
+                direccion.setCalle(resultadoConsulta.getString("calle"));
+                direccion.setColonia(resultadoConsulta.getString("colonia"));
+                direccion.setCodigoPostal(resultadoConsulta.getString("cp"));
+                direccion.setNumeroExterior(resultadoConsulta.getInt("numeroExterior"));
+                direccion.setNumeroInterior(resultadoConsulta.getInt("numeroInterior"));
+
+                propiedad.setDireccion(direccion);
                 propiedades.add(propiedad);
             }
 
@@ -46,24 +65,25 @@ public class PropiedadControlador {
             exepcion.printStackTrace();
 
         } finally {
-            // gestorBaseDeDatos.cerrarConexion();
+            gestorBaseDeDatos.cerrarConexion();
         }
 
         return propiedades;
-    } 
+    }
 
     public int editarNombrePropiedad(int idPropiedad, String nombre) {
-        Connection conexion = null;
-        PreparedStatement sentencia = null;
+        Connection conexion;
+        PreparedStatement sentencia;
 
         String consulta = "UPDATE Propiedad SET nombre = ? WHERE idPropiedad = ?";
         int resultadoEditar = 0;
 
         try {
-            // conexion = gestorBaseDeDatos.abrirConexion();
+            conexion = gestorBaseDeDatos.obtenerConexion();
             sentencia = conexion.prepareStatement(consulta);
 
             sentencia.setString(1, nombre);
+            sentencia.setInt(2, idPropiedad);
 
             resultadoEditar = sentencia.executeUpdate();
 
@@ -71,24 +91,25 @@ public class PropiedadControlador {
             exepcion.printStackTrace();
 
         } finally {
-            // gestorBaseDeDatos.cerrarConexion();
+            gestorBaseDeDatos.cerrarConexion();
         }
 
         return resultadoEditar;
     }
 
     public int editarPrecioPropiedad(int idPropiedad, float precio) {
-        Connection conexion = null;
-        PreparedStatement sentencia = null;
+        Connection conexion;
+        PreparedStatement sentencia;
 
         String consulta = "UPDATE Propiedad SET precio = ? WHERE idPropiedad = ?";
         int resultadoEditar = 0;
 
         try {
-            // conexion = gestorBaseDeDatos.abrirConexion();
+            conexion = gestorBaseDeDatos.obtenerConexion();
             sentencia = conexion.prepareStatement(consulta);
 
             sentencia.setFloat(1, precio);
+            sentencia.setInt(2, idPropiedad);
 
             resultadoEditar = sentencia.executeUpdate();
 
@@ -96,24 +117,25 @@ public class PropiedadControlador {
             exepcion.printStackTrace();
 
         } finally {
-            // gestorBaseDeDatos.cerrarConexion();
+            gestorBaseDeDatos.cerrarConexion();
         }
 
         return resultadoEditar;
     }
 
     public int editarOperacionPropiedad(int idPropiedad, String operacion) {
-        Connection conexion = null;
-        PreparedStatement sentencia = null;
+        Connection conexion;
+        PreparedStatement sentencia;
 
         String consulta = "UPDATE Propiedad SET operacion = ? WHERE idPropiedad = ?";
         int resultadoEditar = 0;
 
         try {
-            // conexion = gestorBaseDeDatos.abrirConexion();
+            conexion = gestorBaseDeDatos.obtenerConexion();
             sentencia = conexion.prepareStatement(consulta);
 
             sentencia.setString(1, operacion);
+            sentencia.setInt(2, idPropiedad);
 
             resultadoEditar = sentencia.executeUpdate();
 
@@ -121,7 +143,7 @@ public class PropiedadControlador {
             exepcion.printStackTrace();
 
         } finally {
-            // gestorBaseDeDatos.cerrarConexion();
+            gestorBaseDeDatos.cerrarConexion();
         }
 
         return resultadoEditar;

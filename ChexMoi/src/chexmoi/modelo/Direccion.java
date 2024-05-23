@@ -4,7 +4,7 @@ public class Direccion {
     private int idDireccion;
     private String calle;
     private String colonia;
-    private int codigoPostal;
+    private String codigoPostal;
     private int numeroExterior;
     private int numeroInterior;
 
@@ -12,7 +12,7 @@ public class Direccion {
         this.idDireccion = 0;
         this.calle = "";
         this.colonia = "";
-        this.codigoPostal = 0;
+        this.codigoPostal = "";
         this.numeroExterior = 0;
         this.numeroInterior = 0;
     }
@@ -41,11 +41,11 @@ public class Direccion {
         this.colonia = colonia;
     }
 
-    public int getCodigoPostal() {
+    public String getCodigoPostal() {
         return codigoPostal;
     }
 
-    public void setCodigoPostal(int codigoPostal) {
+    public void setCodigoPostal(String codigoPostal) {
         this.codigoPostal = codigoPostal;
     }
 
@@ -63,5 +63,14 @@ public class Direccion {
 
     public void setNumeroInterior(int numeroInterior) {
         this.numeroInterior = numeroInterior;
+    }
+
+    public boolean equals(Direccion direccion) {
+        return this.idDireccion == direccion.getIdDireccion()
+            && this.calle.equals(direccion.getCalle())
+            && this.colonia.equals(direccion.getColonia())
+            && this.codigoPostal.equals(direccion.getCodigoPostal())
+            && this.numeroExterior == direccion.getNumeroExterior()
+            && this.numeroInterior == direccion.getNumeroInterior();
     }
 }

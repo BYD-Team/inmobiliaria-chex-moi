@@ -84,4 +84,15 @@ public class Propiedad {
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
     }
+
+    public boolean equals(Propiedad propiedad) {
+        return this.idPropiedad == propiedad.getIdPropiedad()
+            && this.nombre.equals(propiedad.getNombre())
+            && this.precio == propiedad.getPrecio()
+            && this.operacion.equals(propiedad.getOperacion())
+            && this.dimensiones.equals(propiedad.getDimensiones())
+            && this.habitaciones == propiedad.getHabitaciones()
+            && this.patio.equals(propiedad.getPatio())
+            && this.direccion.equals(propiedad.getDireccion());
+    }
 }
