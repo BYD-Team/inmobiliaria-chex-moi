@@ -7,6 +7,21 @@ public class SeccionPropiedadesControlador {
     // private Cliente cliente;
 
     // @FXML
+    // private ComboBox<String> preciosComboBox;
+
+    // @FXML
+    // private ComboBox<String> habitacionesComboBox;
+
+    // @FXML
+    // private CheckBox patioCheckBox;
+
+    // @FXML
+    // private HBox preciosComboBox;
+
+    // @FXML
+    // private VBox resultadoBusqueda;
+
+    // @FXML
     // private VBox resultadoBusqueda;
 
     // public void setCliente(Cliente cliente) {
