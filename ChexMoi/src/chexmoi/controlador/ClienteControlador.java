@@ -23,6 +23,11 @@ public class ClienteControlador {
             conexion = gestorBaseDeDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(query);
 
+            preparedStatement.setString(1, cliente.getNombre());
+            preparedStatement.setString(2, cliente.getApellidoPaterno());
+            preparedStatement.setString(3, cliente.getCorreoElectronico());
+            preparedStatement.setString(4, cliente.getClave());
+
             filasAfectadas = preparedStatement.executeUpdate();
         
         } catch(SQLException sqlException) {
