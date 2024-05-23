@@ -16,6 +16,12 @@ import javafx.stage.Stage;
 public class InicioDeSesionControlador {
 
     @FXML
+    private Button crearCuentaButton;
+
+    @FXML
+    private Button invitadoButton;
+    
+    @FXML
     private TextField mailTextField;
 
     @FXML
@@ -50,4 +56,18 @@ public class InicioDeSesionControlador {
         }
     }
 
+    public void abrirVentanaCrearCuenta() {
+        try {
+            Parent crearCuenta = FXMLLoader.load(getClass().getResource("../vista/VentanaCrearCuenta.fxml"));
+            Scene scene = new Scene(crearCuenta);
+
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Menú Principal");
+            stage.show();
+
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
 }
