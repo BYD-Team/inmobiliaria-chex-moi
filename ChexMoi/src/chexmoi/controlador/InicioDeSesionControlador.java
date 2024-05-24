@@ -42,12 +42,12 @@ public class InicioDeSesionControlador {
     private void iniciarSesion(ActionEvent event) {
         Stage stage = (Stage) iniciarSesionButton.getScene().getWindow();
         Cliente cliente = obtenerCliente(mailTextField.getText(), passwordPasswordField.getText());
-        
+
         if (cliente.getIdCliente() != 0) {
             abrirClienteMenuPrincipal(stage);
 
         } else if (mailTextField.getText().equals("inmobiliario@gmail.com")) {
-            //abrirAgenteInmobiliarioMainMenu
+            abrirAgenteInmobiliarioMenuPrincipal(stage);
         }
 
     }
@@ -84,8 +84,22 @@ public class InicioDeSesionControlador {
         try {
             Parent crearCuenta = FXMLLoader.load(getClass().getResource("../vista/VentanaCrearCuenta.fxml"));
             Scene scene = new Scene(crearCuenta);
-
             Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.setTitle("Menú Principal");
+            stage.show();
+
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
+    private void abrirAgenteInmobiliarioMenuPrincipal(Stage stage) {
+        try {
+            Parent agenteInmobiliarioMenuPrincipal = FXMLLoader.load(getClass().getResource("../vista/AgenteInmobiliarioMenuPrincipal.fxml"));
+            Scene scene = new Scene(agenteInmobiliarioMenuPrincipal);
+
             stage.setScene(scene);
             stage.setTitle("Menú Principal");
             stage.show();

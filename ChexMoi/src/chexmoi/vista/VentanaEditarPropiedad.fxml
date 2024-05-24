@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="ventanaEditarPropiedad" prefHeight="280.0" prefWidth="600.0" style="-fx-background-color: #011120;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chexmoi.controlador.VentanaEditarPropiedadControlador">
+   <center>
+      <VBox alignment="CENTER_LEFT" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox>
+               <children>
+                  <TextField fx:id="nombreTextField" focusTraversable="false" promptText="Casa de prueba" style="-fx-background-color: transparent; -fx-border-color: #777; -fx-text-fill: #fff;" />
+                  <Label fx:id="nombreLabel" />
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <TextField fx:id="precioTextField" focusTraversable="false" prefHeight="25.0" prefWidth="268.0" promptText="500000" style="-fx-background-color: transparent; -fx-border-color: #777; -fx-text-fill: #fff;" />
+                  <Label fx:id="precioLabel" />
+               </children>
+            </VBox>
+            <ComboBox fx:id="operacionComboBox" focusTraversable="false" prefWidth="150.0" promptText="Operación" style="-fx-background-color: transparent; -fx-border-color: #000;">
+               <effect>
+                  <ColorAdjust contrast="-1.0" />
+               </effect></ComboBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </center>
+   <left>
+      <VBox alignment="CENTER_LEFT" spacing="40.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Nombre de la propiedad" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label text="Precio" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label text="Tipo de operación" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </left>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="12.0" prefWidth="410.0" spacing="30.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="guardarButton" mnemonicParsing="false" onAction="#guardarCambiosDePropiedad" style="-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-radius: 3px;" text="Guardar" textFill="WHITE" />
+            <Button fx:id="cancelarButton" mnemonicParsing="false" onAction="#cerrarVentanaEditarPropiedad" style="-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-radius: 3px;" text="Cancelar" textFill="WHITE" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
+      </HBox>
+   </bottom>
+</BorderPane>
