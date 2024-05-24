@@ -72,6 +72,60 @@ public class PropiedadControlador {
         return propiedades;
     }
 
+    public List<Propiedad> obtenerPropiedadesConFiltros(String[] filtro) {
+        Connection conexion;
+        PreparedStatement sentencia;
+        ResultSet resultadoConsulta;
+
+        String consulta = "CALL filterPropiedades(?, ?, ?)";
+        List<Propiedad> propiedades = new ArrayList<Propiedad>();
+        Propiedad propiedad;
+        Direccion direccion;
+
+        try {
+            conexion = gestorBaseDeDatos.obtenerConexion();
+            sentencia = conexion.prepareStatement(consulta);
+            
+            sentencia.setFloat(1, Float.parseFloat(filtro[0]));
+            sentencia.setString(2, filtro[2]);
+            sentencia.setInt(3, Integer.parseInt(filtro[1]));
+            
+            resultadoConsulta = sentencia.executeQuery();
+
+            while (resultadoConsulta.next()) {
+                propiedad = new Propiedad();
+
+                propiedad.setIdPropiedad(resultadoConsulta.getInt("idPropiedad"));
+                propiedad.setNombre(resultadoConsulta.getString("nombre"));
+                propiedad.setPrecio(resultadoConsulta.getFloat("precio"));
+                propiedad.setOperacion(resultadoConsulta.getString("operacion"));
+                propiedad.setDimensiones(resultadoConsulta.getString("dimensiones"));
+                propiedad.setHabitaciones(resultadoConsulta.getInt("habitaciones"));
+                propiedad.setPatio(resultadoConsulta.getString("patio"));
+
+                direccion = new Direccion();
+
+                direccion.setIdDireccion(resultadoConsulta.getInt("idDireccion"));
+                direccion.setCalle(resultadoConsulta.getString("calle"));
+                direccion.setColonia(resultadoConsulta.getString("colonia"));
+                direccion.setCodigoPostal(resultadoConsulta.getString("cp"));
+                direccion.setNumeroExterior(resultadoConsulta.getInt("numeroExterior"));
+                direccion.setNumeroInterior(resultadoConsulta.getInt("numeroInterior"));
+
+                propiedad.setDireccion(direccion);
+                propiedades.add(propiedad);
+            }
+
+        } catch (Exception exepcion) {
+            exepcion.printStackTrace();
+
+        } finally {
+            gestorBaseDeDatos.cerrarConexion();
+        }
+
+        return propiedades;
+    }
+
     public int editarNombrePropiedad(int idPropiedad, String nombre) throws SQLException {
         Connection conexion;
         PreparedStatement sentencia;

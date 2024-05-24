@@ -36,19 +36,40 @@ public class SeccionPropiedadesControlador {
     @FXML
     private FlowPane resultadoBusqueda;
 
+    @FXML
+    private Button botonBuscar;
+
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
     @FXML
-    private void buscarPropiedades(ActionEvent event) {
+    private void buscarPropiedades() {
+        botonBuscar.setOnAction(event -> {
+            resultadoBusqueda.getChildren().clear();
 
+            List<Propiedad> propiedades = new ArrayList<Propiedad>();
+    
+            propiedades = propiedadControlador.obtenerPropiedadesConFiltros(obtenerFiltros());
+
+            if (propiedades.isEmpty()) {
+                resultadoBusqueda.getChildren().add(crearEtiqueta("No se encontraron propiedades", 20));
+    
+            } else {
+                for (Propiedad propiedad : propiedades) {
+                    resultadoBusqueda.getChildren().add(crearPropiedadElemento(propiedad));
+                }
+            }
+
+        });
     }
 
     @FXML
     private void initialize() {
         propiedadControlador = new PropiedadControlador();
         mostrarPropiedades();
+        llenarPreciosComboBox();
+        llenarHabitacionesComboBox();
     }
 
     @FXML
@@ -72,6 +93,44 @@ public class SeccionPropiedadesControlador {
                 resultadoBusqueda.getChildren().add(crearPropiedadElemento(propiedad));
             }
         }
+    }
+
+    public void llenarPreciosComboBox() {
+        preciosComboBox.getItems().add("50000");
+        preciosComboBox.getItems().add("100000");
+        preciosComboBox.getItems().add("150000");
+        preciosComboBox.getItems().add("1000000");
+    }
+
+    public void llenarHabitacionesComboBox() {
+        habitacionesComboBox.getItems().add("1");
+        habitacionesComboBox.getItems().add("2");
+        habitacionesComboBox.getItems().add("3");
+        habitacionesComboBox.getItems().add("4");
+        habitacionesComboBox.getItems().add("5");
+        habitacionesComboBox.getItems().add("6");
+        habitacionesComboBox.getItems().add("7");
+        habitacionesComboBox.getItems().add("8");
+        habitacionesComboBox.getItems().add("9");
+        habitacionesComboBox.getItems().add("10");
+        habitacionesComboBox.getItems().add("11");
+        habitacionesComboBox.getItems().add("12");
+    }
+
+    private String[] obtenerFiltros() {
+        String[] filtros = new String[3]; 
+
+        filtros[0] = preciosComboBox.getValue();
+        filtros[1] = habitacionesComboBox.getValue();
+
+        if (patioCheckBox.isSelected()) {
+            filtros[2] = "Sí";
+
+        } else {
+            filtros[2] = "No";
+        }
+        
+        return filtros;
     }
 
     private VBox crearPropiedadElemento(Propiedad propiedad) {
