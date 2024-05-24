@@ -2,7 +2,6 @@ package chexmoi.controlador;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import chexmoi.modelo.Propiedad;
@@ -67,7 +66,7 @@ public class SeccionPropiedadesDelAgenteInmobiliarioControlador {
                 }
             }
 
-        } catch (SQLException sqlException) {
+        } catch (SQLException sqlExcepcion) {
             VentanaEmergente ventanaEmergente = new VentanaEmergente();
 
             String titulo = "Error con la base de datos";

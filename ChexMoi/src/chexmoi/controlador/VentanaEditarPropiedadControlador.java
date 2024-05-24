@@ -54,7 +54,7 @@ public class VentanaEditarPropiedadControlador {
         propiedadControlador = new PropiedadControlador();
         operacionEstilo = operacionComboBox.getStyle();
 
-        setFieldsLimit();
+        establecerLimitDeCampos();
     }
 
     @FXML
@@ -68,15 +68,15 @@ public class VentanaEditarPropiedadControlador {
         guardarPropiedad();
     }
 
-    private void setFieldsLimit() {
-        setLimitTextField(nombreTextField, 45);
-        setLimitTextField(precioTextField, 32);
+    private void establecerLimitDeCampos() {
+        establecerLimiteDeCampo(nombreTextField, 45);
+        establecerLimiteDeCampo(precioTextField, 32);
     }
 
-    private void setLimitTextField(TextField textField, int maxLength) {
-        textField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null && newValue.length() > maxLength) {
-                textField.setText(newValue.substring(0, maxLength));
+    private void establecerLimiteDeCampo(TextField textField, int maxLength) {
+        textField.textProperty().addListener((observador, viejoValor, nuevoValor) -> {
+            if (nuevoValor != null && nuevoValor.length() > maxLength) {
+                textField.setText(nuevoValor.substring(0, maxLength));
             }
         });
     }
@@ -98,7 +98,7 @@ public class VentanaEditarPropiedadControlador {
 
     private void setRegisteredTextField(TextField textField, Label label) {
         setTextField(textField, textField.getText());
-        setRegisteredFieldStyle(textField, label);
+        establecerEstiloDeCampoRegistrado(textField, label);
     }
 
     private void guardarPropiedad() {
@@ -152,131 +152,131 @@ public class VentanaEditarPropiedadControlador {
     }
 
     private boolean esFormatoDeNombreValido(TextField textField, Label label) {
-        setDefaultFieldStyle(textField, label);
-        boolean isValid = true;
+        establecerEstiloDeCampoPorDefecto(textField, label);
+        boolean esValido = true;
 
-        if (isFieldEmpty(textField, label)) {
-            isValid = false;
+        if (esCampoVacio(textField, label)) {
+            esValido = false;
 
-        } else if (!isFieldLengthValid(textField, label, 45)) {
-            isValid = false;
+        } else if (!esLongitudDeCampoValido(textField, label, 45)) {
+            esValido = false;
 
-        } else if (!isSentenceFieldFormatValid(textField, label)) {
-            isValid = false;
+        } else if (!esFormatoDeSentenciaCampoValido(textField, label)) {
+            esValido = false;
         }
 
-        return isValid;
+        return esValido;
     }
 
     private boolean esFormatoDePrecioValido(TextField textField, Label label) {
-        setDefaultFieldStyle(textField, label);
-        boolean isValid = true;
+        establecerEstiloDeCampoPorDefecto(textField, label);
+        boolean esValido = true;
 
-        if (isFieldEmpty(textField, label)) {
-            isValid = false;
+        if (esCampoVacio(textField, label)) {
+            esValido = false;
 
-        } else if (!isFieldLengthValid(textField, label, 32)) {
-            isValid = false;
+        } else if (!esLongitudDeCampoValido(textField, label, 32)) {
+            esValido = false;
 
-        } else if (!isNumberFieldFormatValid(textField, label)) {
-            isValid = false;
+        } else if (!esFormatoDeNumeroCampoValido(textField, label)) {
+            esValido = false;
         }
 
-        return isValid;
+        return esValido;
     }
 
-    private boolean isFieldEmpty(TextField textField, Label label) {
-        boolean isEmpty = false;
+    private boolean esCampoVacio(TextField textField, Label label) {
+        boolean esVacio = false;
 
         if (textField.getText().isEmpty()) {
-            setEmptyFieldStyle(textField, label);
-            isEmpty = true;
+            establecerEstiloDeCampoVacio(textField, label);
+            esVacio = true;
         }
 
-        return isEmpty;
+        return esVacio;
     }
 
-    private boolean isFieldLengthValid(TextField textField, Label label, int length) {
-        setTrimFormat(textField);
-        boolean isValid = true;
+    private boolean esLongitudDeCampoValido(TextField textField, Label label, int longitud) {
+        limpiarEspacios(textField);
+        boolean esValido = true;
 
-        if (textField.getText().length() > length) {
-            setLengthFieldStyle(textField, label, length);
-            isValid = false;
+        if (textField.getText().length() > longitud) {
+            establecerEstiloDeCampoDeLongitud(textField, label, longitud);
+            esValido = false;
         }
 
-        return isValid;
+        return esValido;
     }
 
-    private boolean isSentenceFieldFormatValid(TextField textField, Label label) {
-        setTrimFormat(textField);
-        boolean isValid = true;
+    private boolean esFormatoDeSentenciaCampoValido(TextField textField, Label label) {
+        limpiarEspacios(textField);
+        boolean esValido = true;
 
-        if (!isSentenceValid(textField.getText())) {
-            setInvalidFieldStyle(textField, label);
-            isValid = false;
+        if (!esSentenciaValida(textField.getText())) {
+            establecerEstiloDeCampoInvalido(textField, label);
+            esValido = false;
         }
 
-        return isValid;
+        return esValido;
     }
 
-    private boolean isNumberFieldFormatValid(TextField textField, Label label) {
-        setTrimFormat(textField);
-        boolean isValid = true;
+    private boolean esFormatoDeNumeroCampoValido(TextField textField, Label label) {
+        limpiarEspacios(textField);
+        boolean esValido = true;
 
-        if (!isNumberValid(textField.getText())) {
-            setInvalidFieldStyle(textField, label);
-            isValid = false;
+        if (!esNumeroValido(textField.getText())) {
+            establecerEstiloDeCampoInvalido(textField, label);
+            esValido = false;
         }
 
-        return isValid;
+        return esValido;
     }
 
-    private void setTrimFormat(TextField textField) {
+    private void limpiarEspacios(TextField textField) {
         textField.setText(textField.getText().trim());
     }
 
-    private void setDefaultFieldStyle(TextField textField, Label label) {
+    private void establecerEstiloDeCampoPorDefecto(TextField textField, Label label) {
         textField.setStyle("-fx-background-color: transparent; -fx-border-color: #777; -fx-text-fill: #fff;");
         label.setText("");
     }
 
-    private void setLengthFieldStyle(TextField textField, Label label, int length) {
+    private void establecerEstiloDeCampoDeLongitud(TextField textField, Label label, int length) {
         textField.setStyle("-fx-background-color: transparent; -fx-border-color: #FF0000; -fx-text-fill: #fff;");
         label.setStyle("-fx-text-fill: #FF0000;");
         label.setText("Deben ser " + length + " caracteres");
     }
 
-    private void setEmptyFieldStyle(TextField textField, Label label) {
+    private void establecerEstiloDeCampoVacio(TextField textField, Label label) {
         textField.setStyle("-fx-background-color: transparent; -fx-border-color: #FF0000; -fx-text-fill: #fff;");
         label.setStyle("-fx-text-fill: #FF0000;");
         label.setText("Campo vacío");
     }
 
-    private void setInvalidFieldStyle(TextField textField, Label label) {
+    private void establecerEstiloDeCampoInvalido(TextField textField, Label label) {
         textField.setStyle("-fx-background-color: transparent; -fx-border-color: #FF0000; -fx-text-fill: #fff;");
         label.setStyle("-fx-text-fill: #FF0000;");
         label.setText("Campo inválido");
     }
 
-    private void setRegisteredFieldStyle(TextField textField, Label label) {
+    private void establecerEstiloDeCampoRegistrado(TextField textField, Label label) {
         textField.setStyle("-fx-background-color: transparent; -fx-border-color: #00FF00; -fx-text-fill: #fff;");
         label.setStyle("-fx-text-fill: #00FF00;");
         label.setText("Campo registrado");
     }
 
-    private boolean isNumberValid(String sentence) {
+    private boolean esNumeroValido(String sentencia) {
         Pattern pattern = Pattern.compile("[0-9.]*$");
-        boolean isValid = pattern.matcher(sentence).matches();
+        boolean esValido = pattern.matcher(sentencia).matches();
 
-        return isValid;
+        return esValido;
     }
 
-    private boolean isSentenceValid(String sentence) {
+    private boolean esSentenciaValida(String sentencia) {
         Pattern pattern = Pattern.compile("[ \\w&&[^_]]*$", Pattern.UNICODE_CHARACTER_CLASS);
-        boolean isValid = pattern.matcher(sentence).matches();
+        boolean esValido = pattern.matcher(sentencia).matches();
 
-        return isValid;
+        return esValido;
     }
 
 }
