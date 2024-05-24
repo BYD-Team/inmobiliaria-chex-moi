@@ -6,7 +6,6 @@ import java.util.List;
 
 import chexmoi.modelo.Cliente;
 import chexmoi.modelo.Propiedad;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
