@@ -8,7 +8,11 @@ public class Cliente {
     private String clave;
 
     public Cliente() {
-
+        this.idCliente = 0;
+        this.nombre = "";
+        this.apellidoPaterno = "";
+        this.correoElectronico = "";
+        this.clave = "";
     }
 
     public int getIdCliente() {

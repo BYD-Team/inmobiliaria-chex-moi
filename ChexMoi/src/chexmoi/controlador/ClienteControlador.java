@@ -47,7 +47,7 @@ public class ClienteControlador {
         PreparedStatement preparedStatement;
         ResultSet resultSet;
         String query = "SELECT * FROM cliente WHERE correoElectronico = ? AND clave = SHA2(?,256)";
-        Cliente cliente = null;
+        Cliente cliente = new Cliente();
 
         try {
             conexion = gestorBaseDeDatos.obtenerConexion();
