@@ -68,7 +68,7 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <Label fx:id="mailLabel" text="Etiqueta">
+                  <Label fx:id="mailLabel">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -83,7 +83,7 @@
                         <Font size="14.0" />
                      </font>
                   </PasswordField>
-                  <Label fx:id="passwordLabel" text="Etiqueta">
+                  <Label fx:id="passwordLabel">
                      <font>
                         <Font size="14.0" />
                      </font>

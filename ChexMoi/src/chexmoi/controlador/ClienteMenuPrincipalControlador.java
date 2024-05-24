@@ -11,31 +11,18 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
 public class ClienteMenuPrincipalControlador {
-    private static String mail;
-    private static Cliente cliente;
+    private Cliente cliente;
 
     @FXML
     private BorderPane clienteMenuPrincipal;
 
-    public static void setCliente(String mail) {
-        ClienteMenuPrincipalControlador.mail = mail;
-    }
-
-    public static Cliente getCliente() {
-        if (cliente == null) {
-            ClienteControlador clienteControlador = new ClienteControlador();
-
-            // cliente = clienteControlador.obtenerCliente(mail);
-        }
-
-        return cliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     @FXML
     private void abrirSeccionPropiedades(ActionEvent event) {
         try {
-            Cliente cliente = getCliente();
-
             FXMLLoader parent = new FXMLLoader(getClass().getResource("../vista/SeccionPropiedades.fxml"));
             Parent root = parent.load();
 

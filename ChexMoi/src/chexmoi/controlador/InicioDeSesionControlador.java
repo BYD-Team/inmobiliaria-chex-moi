@@ -44,7 +44,7 @@ public class InicioDeSesionControlador {
         Cliente cliente = obtenerCliente(mailTextField.getText(), passwordPasswordField.getText());
 
         if (cliente.getIdCliente() != 0) {
-            abrirClienteMenuPrincipal(stage);
+            abrirClienteMenuPrincipal(stage, cliente);
 
         } else if (mailTextField.getText().equals("inmobiliario@gmail.com")) {
             abrirAgenteInmobiliarioMenuPrincipal(stage);
@@ -66,10 +66,15 @@ public class InicioDeSesionControlador {
         return cliente;
     }
 
-    private void abrirClienteMenuPrincipal(Stage stage) {
+    private void abrirClienteMenuPrincipal(Stage stage, Cliente cliente) {
         try {
-            Parent clienteMenuPrincipal = FXMLLoader.load(getClass().getResource("../vista/ClienteMenuPrincipal.fxml"));
-            Scene scene = new Scene(clienteMenuPrincipal);
+            FXMLLoader clienteMenuPrincipal = new FXMLLoader(getClass().getResource("../vista/ClienteMenuPrincipal.fxml"));
+            Parent clienteMenuPrincipalParent = clienteMenuPrincipal.load();
+
+            ClienteMenuPrincipalControlador clienteMenuPrincipalControlador = clienteMenuPrincipal.getController();
+            clienteMenuPrincipalControlador.setCliente(cliente); 
+
+            Scene scene = new Scene(clienteMenuPrincipalParent);
 
             stage.setScene(scene);
             stage.setTitle("Menú Principal");

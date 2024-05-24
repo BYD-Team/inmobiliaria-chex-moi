@@ -100,7 +100,7 @@ public class SeccionPropiedadesDelAgenteInmobiliarioControlador {
         propiedadElemento.setSpacing(10);
         propiedadElemento.setMinWidth(400);
         propiedadElemento.setPadding(new Insets(10));
-        propiedadElemento.setStyle("-fx-border-color: #000;");
+        propiedadElemento.setStyle("-fx-border-color: #777;");
         propiedadElemento.getChildren().add(etiquetas);
         propiedadElemento.getChildren().add(contenedor);
 
@@ -111,6 +111,7 @@ public class SeccionPropiedadesDelAgenteInmobiliarioControlador {
         Label etiquetaLabel = new Label(etiqueta);
 
         etiquetaLabel.setFont(new Font("Arial", tamanoFuente));
+        etiquetaLabel.setStyle("-fx-text-fill: #fff;");
 
         return etiquetaLabel;
     }
@@ -124,13 +125,15 @@ public class SeccionPropiedadesDelAgenteInmobiliarioControlador {
     }
 
     private Button crearBotonEditar(Propiedad propiedad) {
-        Button botonRentar = new Button("Editar");
+        Button botonEditar = new Button("Editar");
 
-        botonRentar.setOnAction(event ->{
+        botonEditar.setStyle("-fx-text-fill: #fff; -fx-background-color: transparent; -fx-border-color: #fff;");
+
+        botonEditar.setOnAction(event ->{
             abrirEditarPropiedad(propiedad);
         });
 
-        return botonRentar;
+        return botonEditar;
     }
 
     private void abrirEditarPropiedad(Propiedad propiedad) {
