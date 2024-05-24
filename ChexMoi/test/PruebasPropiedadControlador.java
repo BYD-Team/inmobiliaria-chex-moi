@@ -1,6 +1,8 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.junit.Test;
@@ -12,7 +14,7 @@ public class PruebasPropiedadControlador {
     public Inicial inicial = new Inicial();
 
     @Test
-    public void pruebaObtenerPropiedadesExitosa() {
+    public void pruebaObtenerPropiedadesExitosa() throws Exception {
         PropiedadControlador propiedadControlador = new PropiedadControlador();
 
         List<Propiedad> propiedadesExperadas = inicial.obtenerPropiedades();
@@ -26,7 +28,7 @@ public class PruebasPropiedadControlador {
     }
 
     @Test
-    public void pruebaEditarNombreDePropiedadExitosa() {
+    public void pruebaEditarNombreDePropiedadExitosa() throws Exception {
         Propiedad propiedadOriginal = inicial.obtenerPropiedades().get(0);
 
         PropiedadControlador propiedadControlador = new PropiedadControlador();
@@ -40,15 +42,15 @@ public class PruebasPropiedadControlador {
     }
 
     @Test
-    public void pruebaEditarNombreDePropiedadFallida() {
+    public void pruebaEditarNombreDePropiedadFallida() throws SQLException {
         PropiedadControlador propiedadControlador = new PropiedadControlador();
-
         int resultadoEditar = propiedadControlador.editarNombrePropiedad(-1, "Casa de Prueba");
+
         assertEquals(0, resultadoEditar);
     }
 
     @Test
-    public void pruebaEditarPrecioDePropiedadExitosa() {
+    public void pruebaEditarPrecioDePropiedadExitosa() throws Exception {
         Propiedad propiedadOriginal = inicial.obtenerPropiedades().get(0);
 
         PropiedadControlador propiedadControlador = new PropiedadControlador();
@@ -62,15 +64,15 @@ public class PruebasPropiedadControlador {
     }
 
     @Test
-    public void pruebaEditarPrecioDePropiedadFallida() {
+    public void pruebaEditarPrecioDePropiedadFallida() throws SQLException {
         PropiedadControlador propiedadControlador = new PropiedadControlador();
-
         int resultadoEditar = propiedadControlador.editarPrecioPropiedad(-1, 1000000);
+
         assertEquals(0, resultadoEditar);
     }
 
     @Test
-    public void pruebaEditarOperacionDePropiedadExitosa() {
+    public void pruebaEditarOperacionDePropiedadExitosa() throws Exception {
         Propiedad propiedadOriginal = inicial.obtenerPropiedades().get(0);
 
         PropiedadControlador propiedadControlador = new PropiedadControlador();
@@ -84,10 +86,10 @@ public class PruebasPropiedadControlador {
     }
 
     @Test
-    public void pruebaEditarOperacionDePropiedadFallida() {
+    public void pruebaEditarOperacionDePropiedadFallida() throws SQLException {
         PropiedadControlador propiedadControlador = new PropiedadControlador();
+        int resultadoEditar = propiedadControlador.editarOperacionPropiedad(-1, "Venta");
 
-        int resultadoEditar = propiedadControlador.editarOperacionPropiedad(-1, "Alquiler");
         assertEquals(0, resultadoEditar);
     }
 

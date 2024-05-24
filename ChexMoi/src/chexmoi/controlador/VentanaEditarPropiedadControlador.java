@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 public class VentanaEditarPropiedadControlador {
     private PropiedadControlador propiedadControlador;
     private Propiedad propiedad;
-    private String operacionStyle;
+    private String operacionEstilo;
 
     @FXML
     private BorderPane ventanaEditarPropiedad;
@@ -52,6 +52,7 @@ public class VentanaEditarPropiedadControlador {
     @FXML
     private void initialize() {
         propiedadControlador = new PropiedadControlador();
+        operacionEstilo = operacionComboBox.getStyle();
 
         setFieldsLimit();
     }
@@ -101,36 +102,53 @@ public class VentanaEditarPropiedadControlador {
     }
 
     private void guardarPropiedad() {
+        operacionComboBox.setStyle(operacionEstilo);
+        boolean hayCambios = false;
+
         boolean esNombreValido = esFormatoDeNombreValido(nombreTextField, nombreLabel);
         boolean esPrecioValido = esFormatoDePrecioValido(precioTextField, precioLabel);
-        operacionComboBox.setStyle(operacionStyle + " -fx-border-color: #777;");
 
-        // try {
+        try {
 
             if (esNombreValido && !propiedad.getNombre().equals(nombreTextField.getText())) {
                 propiedadControlador.editarNombrePropiedad(propiedad.getIdPropiedad(), nombreTextField.getText());
                 setRegisteredTextField(nombreTextField, nombreLabel);
                 propiedad.setNombre(nombreTextField.getText());
+                hayCambios = true;
             }
 
             if (esPrecioValido && propiedad.getPrecio() != Float.parseFloat(precioTextField.getText())) {
                 propiedadControlador.editarPrecioPropiedad(propiedad.getIdPropiedad(), Float.parseFloat(precioTextField.getText()));
                 setRegisteredTextField(precioTextField, precioLabel);
                 propiedad.setPrecio(Float.parseFloat(precioTextField.getText()));
+                hayCambios = true;
             }
 
             if (!propiedad.getOperacion().equals(operacionComboBox.getValue())) {
                 propiedadControlador.editarOperacionPropiedad(propiedad.getIdPropiedad(), operacionComboBox.getValue());
-                operacionComboBox.setStyle(operacionStyle + " -fx-border-color: #00FF00;");
+                operacionComboBox.setStyle("-fx-background-color: transparent; -fx-border-color: #00FF00;");
                 propiedad.setOperacion(operacionComboBox.getValue());
-
-            } else {
-                operacionComboBox.setStyle(operacionStyle + " -fx-border-color: #777;");
+                hayCambios = true;
             }
 
-        // } catch (SQLException sqlExcepcion) {
-        //     sqlExcepcion.printStackTrace();
-        // }
+            if (hayCambios) {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente();
+
+                String titulo = "Propiedad Actualizada";
+                String mensaje = "La propiedad ha sido actualizada exitosamente";
+
+                ventanaEmergente.mostrarVentanaDeActualizacionExitosa(titulo, mensaje);
+            }
+
+        } catch (SQLException sqlExcepcion) {
+            VentanaEmergente ventanaEmergente = new VentanaEmergente();
+
+            String titulo = "Error con la base de datos";
+            String encabezado = "Error al actualizar la propiedad";
+            String mensaje = "No se pudo actualizar la propiedad. Por favor, inténtelo más tarde.";
+
+            ventanaEmergente.mostrarVentanaDeError(titulo, encabezado, mensaje);
+        }
     }
 
     private boolean esFormatoDeNombreValido(TextField textField, Label label) {

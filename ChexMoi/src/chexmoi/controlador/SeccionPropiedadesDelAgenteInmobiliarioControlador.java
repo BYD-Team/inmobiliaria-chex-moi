@@ -1,6 +1,7 @@
 package chexmoi.controlador;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,17 +55,26 @@ public class SeccionPropiedadesDelAgenteInmobiliarioControlador {
     private void mostrarPropiedades() {
         resultadoBusqueda.getChildren().clear();
 
-        List<Propiedad> propiedades = new ArrayList<Propiedad>();
+        try {
+            List<Propiedad> propiedades = propiedadControlador.obtenerPropiedades();
 
-        propiedades = propiedadControlador.obtenerPropiedades();
-
-        if (propiedades.isEmpty()) {
-            resultadoBusqueda.getChildren().add(crearEtiqueta("No se encontraron propiedades", 20));
-
-        } else {
-            for (Propiedad propiedad : propiedades) {
-                resultadoBusqueda.getChildren().add(crearPropiedadElemento(propiedad));
+            if (propiedades.isEmpty()) {
+                resultadoBusqueda.getChildren().add(crearEtiqueta("No se encontraron propiedades", 20));
+    
+            } else {
+                for (Propiedad propiedad : propiedades) {
+                    resultadoBusqueda.getChildren().add(crearPropiedadElemento(propiedad));
+                }
             }
+
+        } catch (SQLException sqlException) {
+            VentanaEmergente ventanaEmergente = new VentanaEmergente();
+
+            String titulo = "Error con la base de datos";
+            String encabezado = "Error al mostrar las propiedades";
+            String mensaje = "No se pudo obtener el registro de propiedades. Por favor, inténtelo más tarde.";
+
+            ventanaEmergente.mostrarVentanaDeError(titulo, encabezado, mensaje);
         }
     }
 

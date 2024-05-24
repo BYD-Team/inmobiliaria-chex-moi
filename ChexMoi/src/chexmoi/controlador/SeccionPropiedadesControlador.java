@@ -1,5 +1,6 @@
 package chexmoi.controlador;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +57,12 @@ public class SeccionPropiedadesControlador {
 
         List<Propiedad> propiedades = new ArrayList<Propiedad>();
 
-        propiedades = propiedadControlador.obtenerPropiedades();
+        try {
+            propiedades = propiedadControlador.obtenerPropiedades();
+
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
 
         if (propiedades.isEmpty()) {
             resultadoBusqueda.getChildren().add(crearEtiqueta("No se encontraron propiedades", 20));

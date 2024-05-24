@@ -3,6 +3,7 @@ package chexmoi.controlador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class PropiedadControlador {
         gestorBaseDeDatos = new GestorBaseDeDatos();
     }
 
-    public List<Propiedad> obtenerPropiedades() {
+    public List<Propiedad> obtenerPropiedades() throws SQLException {
         Connection conexion;
         PreparedStatement sentencia;
         ResultSet resultadoConsulta;
@@ -61,8 +62,8 @@ public class PropiedadControlador {
                 propiedades.add(propiedad);
             }
 
-        } catch (Exception exepcion) {
-            exepcion.printStackTrace();
+        } catch (SQLException sqlExepcion) {
+            throw sqlExepcion;
 
         } finally {
             gestorBaseDeDatos.cerrarConexion();
@@ -71,7 +72,7 @@ public class PropiedadControlador {
         return propiedades;
     }
 
-    public int editarNombrePropiedad(int idPropiedad, String nombre) {
+    public int editarNombrePropiedad(int idPropiedad, String nombre) throws SQLException {
         Connection conexion;
         PreparedStatement sentencia;
 
@@ -87,8 +88,8 @@ public class PropiedadControlador {
 
             resultadoEditar = sentencia.executeUpdate();
 
-        } catch (Exception exepcion) {
-            exepcion.printStackTrace();
+        } catch (SQLException sqlExepcion) {
+            throw sqlExepcion;
 
         } finally {
             gestorBaseDeDatos.cerrarConexion();
@@ -97,7 +98,7 @@ public class PropiedadControlador {
         return resultadoEditar;
     }
 
-    public int editarPrecioPropiedad(int idPropiedad, float precio) {
+    public int editarPrecioPropiedad(int idPropiedad, float precio) throws SQLException {
         Connection conexion;
         PreparedStatement sentencia;
 
@@ -113,8 +114,8 @@ public class PropiedadControlador {
 
             resultadoEditar = sentencia.executeUpdate();
 
-        } catch (Exception exepcion) {
-            exepcion.printStackTrace();
+        } catch (SQLException sqlExepcion) {
+            throw sqlExepcion;
 
         } finally {
             gestorBaseDeDatos.cerrarConexion();
@@ -123,7 +124,7 @@ public class PropiedadControlador {
         return resultadoEditar;
     }
 
-    public int editarOperacionPropiedad(int idPropiedad, String operacion) {
+    public int editarOperacionPropiedad(int idPropiedad, String operacion) throws SQLException {
         Connection conexion;
         PreparedStatement sentencia;
 
@@ -139,8 +140,8 @@ public class PropiedadControlador {
 
             resultadoEditar = sentencia.executeUpdate();
 
-        } catch (Exception exepcion) {
-            exepcion.printStackTrace();
+        } catch (SQLException sqlExepcion) {
+            throw sqlExepcion;
 
         } finally {
             gestorBaseDeDatos.cerrarConexion();

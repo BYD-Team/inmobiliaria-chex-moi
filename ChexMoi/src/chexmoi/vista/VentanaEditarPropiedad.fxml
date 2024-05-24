@@ -5,7 +5,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -27,9 +28,13 @@
                   <Label fx:id="precioLabel" />
                </children>
             </VBox>
-            <ComboBox fx:id="operacionComboBox" focusTraversable="false" prefWidth="150.0" promptText="Operación" style="-fx-background-color: transparent; -fx-border-color: #000;">
+            <ComboBox fx:id="operacionComboBox" focusTraversable="false" prefWidth="150.0" promptText="Operación" style="-fx-background-color: transparent; -fx-border-color: #777;">
                <effect>
-                  <ColorAdjust contrast="-1.0" />
+                  <Lighting diffuseConstant="1.7" light="$null" specularConstant="1.75" specularExponent="35.86" surfaceScale="0.0">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                  </Lighting>
                </effect></ComboBox>
          </children>
          <BorderPane.margin>
