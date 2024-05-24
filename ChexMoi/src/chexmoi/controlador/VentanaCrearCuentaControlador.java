@@ -99,7 +99,7 @@ public class VentanaCrearCuentaControlador {
             } catch (SQLException sqlException) {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente();
 
-                ventanaEmergente.mostrarVentanaErrorConBaseDeDatos();
+                ventanaEmergente.mostrarVentanaNoSePuedoCrearCuenta();
             }
         } 
     }

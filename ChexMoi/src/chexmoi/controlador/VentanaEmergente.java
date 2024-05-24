@@ -30,12 +30,12 @@ public class VentanaEmergente {
         alert.setContentText(mesagge);
     }
 
-    public void mostrarVentanaErrorConBaseDeDatos() {
+    public void mostrarVentanaNoSePuedoCrearCuenta() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
 
-        alert.setTitle("Error de Conexión con la base de datos");
-        alert.setContentText("No se pudo conectar con la base de datos. Por favor, inténtelo más tarde.");
-        alert.setHeaderText("Error de Conexión con la base de datos");
+        alert.setTitle("No fue posible crear la cuenta");
+        alert.setContentText("La cuenta no puede ser creada en este momento. Por favor inténtelo más tarde");
+        alert.setHeaderText("Cuenta no creada");
         alert.showAndWait();
     }
 }
