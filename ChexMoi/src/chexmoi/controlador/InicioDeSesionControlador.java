@@ -16,6 +16,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class InicioDeSesionControlador {
+    private String ADMIN_MAIL = "inmobiliario@gmail.com";
+    private String ADMIN_PASSWORD = "admin";
 
     @FXML
     private Button crearCuentaButton;
@@ -46,10 +48,14 @@ public class InicioDeSesionControlador {
         if (cliente.getIdCliente() != 0) {
             abrirClienteMenuPrincipal(stage, cliente);
 
-        } else if (mailTextField.getText().equals("inmobiliario@gmail.com")) {
+        } else if (mailTextField.getText().equals(ADMIN_MAIL) && passwordPasswordField.getText().equals(ADMIN_PASSWORD)) {
             abrirAgenteInmobiliarioMenuPrincipal(stage);
-        }
 
+        } else {
+            VentanaEmergente ventanaEmergente = new VentanaEmergente();
+            
+            ventanaEmergente.mostrarVentanaDeError("Error", "Inicio de Sesión Fallido", "Correo o contraseña incorrectos");
+        }
     }
 
     public Cliente obtenerCliente(String correo, String clave) {

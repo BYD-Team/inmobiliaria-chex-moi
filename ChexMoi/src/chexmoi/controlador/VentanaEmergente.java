@@ -28,6 +28,7 @@ public class VentanaEmergente {
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(mesagge);
+        alert.showAndWait();
     }
 
     public void mostrarVentanaNoSePuedoCrearCuenta() {
