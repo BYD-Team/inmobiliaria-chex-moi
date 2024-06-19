@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="806.0" style="-fx-background-color: #011120;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chexmoi.controlador.VentanaVerDetallesMisPropiedadesControlador">
+   <children>
+      <VBox layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="806.0" spacing="30.0">
+         <children>
+            <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="Detalles de la Propiedad" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <HBox HBox.hgrow="ALWAYS" />
+                  <HBox alignment="TOP_CENTER">
+                     <children>
+                        <Label text="Clave Catastral" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="6.0" />
+                           </HBox.margin>
+                        </Label>
+                        <VBox>
+                           <children>
+                              <TextField fx:id="campoTextoClaveCastral" editable="false" prefHeight="27.0" prefWidth="207.0" promptText="Ej. 003-00-003-08-05-1234" style="-fx-background-color: transparent; -fx-border-color: #777; -fx-text-fill: #fff;" />
+                              <Label fx:id="etiquetaClaveCastralNoValida" text="Label" textFill="RED" visible="false" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="20.0" top="10.0" />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="17.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox prefHeight="42.0" prefWidth="216.0">
+                     <children>
+                        <Label text="Nombre de la Propiedad" textFill="WHITE">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="42.0" prefWidth="386.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox prefHeight="42.0" prefWidth="386.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <TextField fx:id="campoTextoNombre" editable="false" focusTraversable="false" promptText="Ej. Esmeralda" style="-fx-background-color: transparent; -fx-border-color: #777; -fx-text-fill: #fff;" />
+                              <Label fx:id="etiquetaNombreNoValido" text="Label" textFill="RED" visible="false" />
+                           </children>
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="17.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox prefHeight="25.0" prefWidth="222.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Precio" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <TextField fx:id="campoTextoPrecio" editable="false" focusTraversable="false" promptText="Ej. 365,000.00" style="-fx-background-color: transparent; -fx-border-color: #777; -fx-text-fill: #fff;" />
+                              <Label fx:id="etiquetaPrecioNoValido" text="Label" textFill="RED" visible="false" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="42.0" prefWidth="211.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Operación" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <ComboBox fx:id="comboBoxOperacion" disable="true" focusTraversable="false" prefWidth="150.0" promptText="Operación" style="-fx-background-color: transparent; -fx-border-radius: 3px; -fx-border-color: #fff;">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <effect>
+                                    <ColorAdjust contrast="-1.0" />
+                                 </effect></ComboBox>
+                              <Label fx:id="operacionNoValida" text="Label" textFill="RED" visible="false" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Dimensiones" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <TextField fx:id="campoTextoDimensiones" editable="false" focusTraversable="false" promptText="100 m2" style="-fx-background-color: transparent; -fx-border-color: #777; -fx-text-fill: #fff;" />
+                              <Label fx:id="dimensionesNoValido" text="Label" textFill="RED" visible="false" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="17.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox prefHeight="0.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="No. Habitaciones" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <VBox prefHeight="25.0" prefWidth="61.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <TextField fx:id="campoTextoHabitaciones" editable="false" focusTraversable="false" prefHeight="25.0" prefWidth="70.0" promptText="Ej. 4" style="-fx-background-color: transparent; -fx-border-color: #777; -fx-text-fill: #fff;" />
+                              <Label fx:id="habitacionesNoValida" text="Label" textFill="RED" visible="false" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </HBox>
+                  <HBox prefHeight="42.0" prefWidth="211.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="No. Baños" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <VBox prefHeight="42.0" prefWidth="82.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <TextField fx:id="campoTextoBanio" editable="false" focusTraversable="false" prefHeight="25.0" prefWidth="75.0" promptText="Ej. 2" style="-fx-background-color: transparent; -fx-border-color: #777; -fx-text-fill: #fff;" />
+                              <Label fx:id="banioNoValido" text="Label" textFill="RED" visible="false" />
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="42.0" prefWidth="172.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label focusTraversable="false" text="Patio" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <RadioButton fx:id="patioSi" disable="true" focusTraversable="false" mnemonicParsing="false" text="Sí" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets right="6.0" />
+                                       </HBox.margin>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="Patio" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton fx:id="patioNo" disable="true" focusTraversable="false" mnemonicParsing="false" text="No" textFill="WHITE" toggleGroup="$Patio" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="patioNoValido" text="Campo Obligatorio" textFill="RED" visible="false" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="WiFi" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <RadioButton fx:id="wifiSi" disable="true" focusTraversable="false" mnemonicParsing="false" text="Sí" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets right="6.0" />
+                                       </HBox.margin>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="WiFi" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton fx:id="wifiNo" disable="true" focusTraversable="false" mnemonicParsing="false" text="No" textFill="WHITE" toggleGroup="$WiFi" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="wifiNoValido" text="Campo Obligatorio" textFill="RED" visible="false" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefWidth="745.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox prefHeight="121.0" prefWidth="295.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <VBox prefHeight="121.0" prefWidth="289.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Label text="Cocina" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets right="17.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <RadioButton fx:id="cocinaSi" disable="true" focusTraversable="false" mnemonicParsing="false" text="Sí" textFill="WHITE">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="Cocina" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton fx:id="cocinaNo" disable="true" focusTraversable="false" mnemonicParsing="false" text="No" textFill="WHITE" toggleGroup="$Cocina">
+                                             <HBox.margin>
+                                                <Insets left="6.0" />
+                                             </HBox.margin>
+                                          </RadioButton>
+                                          <Label fx:id="cocinaCampoObligatorio" text="Campo Obligatorio" textFill="RED" visible="false">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Label text="Terraza" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets right="13.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <RadioButton fx:id="terrazaSi" disable="true" focusTraversable="false" mnemonicParsing="false" text="Sí" textFill="WHITE">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="Terraza" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton fx:id="terrazaNo" disable="true" focusTraversable="false" mnemonicParsing="false" text="No" textFill="WHITE" toggleGroup="$Terraza">
+                                             <HBox.margin>
+                                                <Insets left="6.0" />
+                                             </HBox.margin>
+                                          </RadioButton>
+                                          <Label fx:id="terrazaCampoObligatorio" text="Campo Obligatorio" textFill="RED" visible="false">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Label text="Muebles" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <RadioButton fx:id="mueblesSi" disable="true" focusTraversable="false" mnemonicParsing="false" text="Sí" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="Muebles" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton fx:id="mueblesNo" disable="true" focusTraversable="false" mnemonicParsing="false" text="No" textFill="WHITE" toggleGroup="$Muebles">
+                                             <HBox.margin>
+                                                <Insets left="7.0" />
+                                             </HBox.margin>
+                                          </RadioButton>
+                                          <Label fx:id="mueblesCampoObligatorio" text="Campo Obligatorio" textFill="RED" visible="false">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Label text="Estacionamiento" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <RadioButton fx:id="estacionamientoSi" disable="true" focusTraversable="false" mnemonicParsing="false" text="Sí" textFill="WHITE">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="Estacionamiento" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton fx:id="estacionamientoNo" disable="true" focusTraversable="false" mnemonicParsing="false" text="No" textFill="WHITE" toggleGroup="$Estacionamiento">
+                                             <HBox.margin>
+                                                <Insets left="6.0" />
+                                             </HBox.margin>
+                                          </RadioButton>
+                                          <Label fx:id="estacionamientoCampoObligatorio" text="Campo Obligatorio" textFill="RED" visible="false">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="121.0" prefWidth="439.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox prefHeight="79.0" prefWidth="429.0" spacing="50.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <VBox prefHeight="79.0" prefWidth="280.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <HBox prefHeight="42.0" prefWidth="202.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Label text="Calle" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <VBox prefHeight="42.0" prefWidth="148.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <TextField fx:id="campoTextoCalle" editable="false" focusTraversable="false" prefHeight="25.0" prefWidth="37.0" promptText="Ej. Ernesto Ortíz Medina" style="-fx-background-color: transparent; -fx-border-color: #777; -fx-text-fill: #fff;" />
+                                                <Label fx:id="calleNoValida" text="Label" textFill="RED" visible="false" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <HBox prefHeight="79.0" prefWidth="283.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Label text="Colonia" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <VBox prefHeight="79.0" prefWidth="139.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <TextField fx:id="campoTextoColonia" editable="false" focusTraversable="false" prefHeight="25.0" prefWidth="109.0" promptText="Ej. Revolución" style="-fx-background-color: transparent; -fx-border-color: #777; -fx-text-fill: #fff;" />
+                                                <Label fx:id="coloniaNoValida" text="Label" textFill="RED" visible="false" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="42.0" prefWidth="454.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox prefHeight="42.0" prefWidth="121.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label text="CP" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <VBox prefHeight="42.0" prefWidth="91.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <TextField fx:id="campoTextoCP" editable="false" focusTraversable="false" promptText="Ej. 91485" style="-fx-background-color: transparent; -fx-border-color: #777; -fx-text-fill: #fff;" />
+                                          <Label fx:id="cpNoValido" text="Label" textFill="RED" visible="false" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="42.0" prefWidth="155.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label text="No. Exterior" textFill="WHITE" />
+                                    <VBox prefHeight="42.0" prefWidth="58.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <TextField fx:id="campoTextoNoExterior" editable="false" focusTraversable="false" promptText="Ej. 56" style="-fx-background-color: transparent; -fx-border-color: #777; -fx-text-fill: #fff;" />
+                                          <Label fx:id="noExteriorNoValido" text="Label" textFill="RED" visible="false" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox prefHeight="42.0" prefWidth="135.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label text="No. Interior" textFill="WHITE" />
+                                    <VBox prefHeight="42.0" prefWidth="62.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <TextField fx:id="campoTextoNoInterior" editable="false" focusTraversable="false" prefHeight="25.0" prefWidth="56.0" promptText="Ej. 15" style="-fx-background-color: transparent; -fx-border-color: #777; -fx-text-fill: #fff;" />
+                                          <Label fx:id="noInteriorNoValido" text="Label" textFill="RED" visible="false" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="30.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox>
+                     <children>
+                        <Label fx:id="etiquetaNoAutos" text="No. Autos" textFill="WHITE" visible="false" />
+                        <VBox>
+                           <children>
+                              <TextField fx:id="campoTextoNoAutos" editable="false" promptText="Ej. 2" style="-fx-background-color: transparent; -fx-border-color: #777; -fx-text-fill: #fff;" visible="false" />
+                              <Label fx:id="noAutosNoValido" text="Label" textFill="RED" visible="false" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefWidth="300.0" />
+                  <HBox alignment="TOP_CENTER" spacing="20.0">
+                     <children>
+                        <Button fx:id="botonGuardar" focusTraversable="false" mnemonicParsing="false" onAction="#guardarPropiedad" style="-fx-background-color: transparent; -fx-background-radius: 3px; -fx-border-color: #fff;" text="Guardar" textFill="WHITE" visible="false">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="botonCancelar" focusTraversable="false" mnemonicParsing="false" onAction="#cancelarEdicion" style="-fx-background-color: transparent; -fx-background-radius: 3px; -fx-border-color: #fff;" text="Cancelar" textFill="WHITE" visible="false">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="botonEditar" mnemonicParsing="false" onAction="#editarPropiedad" style="-fx-background-color: transparent; -fx-background-radius: 3px; -fx-border-color: #fff;" text="Editar" textFill="WHITE" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets right="20.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

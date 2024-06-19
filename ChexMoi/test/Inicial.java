@@ -146,131 +146,201 @@ public class Inicial {
     private void iniciarPropiedades() {
         Propiedad propiedad = new Propiedad();
 
-        propiedad.setIdPropiedad(1);
-        propiedad.setNombre("Casa de campo");
-        propiedad.setPrecio(100000);
-        propiedad.setOperacion("venta");
-        propiedad.setDimensiones("1000 m2");
-        propiedad.setHabitaciones(3);
+        propiedad.setClaveCatastral("11122233344455566677");
+        propiedad.setNombre("Finca");
+        propiedad.setPrecio(1000000.00);
+        propiedad.setOperacion("Venta");
+        propiedad.setDimensiones("4000");
+        propiedad.setHabitaciones(8);
         propiedad.setPatio("Sí");
-        propiedad.setDireccion(direcciones.get(0));
-
-        propiedades.add(propiedad);
-
-        propiedad = new Propiedad();
-
-        propiedad.setIdPropiedad(2);
-        propiedad.setNombre("Casa de playa");
-        propiedad.setPrecio(200000);
-        propiedad.setOperacion("alquiler");
-        propiedad.setDimensiones("2000 m2");
-        propiedad.setHabitaciones(4);
-        propiedad.setPatio("No");
         propiedad.setDireccion(direcciones.get(1));
+        propiedad.setBanios(3);
+        propiedad.setCocina("Sí");
+        propiedad.setEstacionamiento("Sí");
+        propiedad.setTerraza("Sí");
+        propiedad.setMuebles("Sí");
+        propiedad.setWifi("Sí");
+        propiedad.setNumeroAutos(4);
 
         propiedades.add(propiedad);
 
         propiedad = new Propiedad();
 
-        propiedad.setIdPropiedad(3);
-        propiedad.setNombre("Casa de ciudad");
-        propiedad.setPrecio(300000);
-        propiedad.setOperacion("venta");
-        propiedad.setDimensiones("3000 m2");
-        propiedad.setHabitaciones(5);
+        propiedad.setClaveCatastral("12345111900987654321");
+        propiedad.setNombre("Casa de playa");
+        propiedad.setPrecio(100000.00);
+        propiedad.setOperacion("Alquiler");
+        propiedad.setDimensiones("1500");
+        propiedad.setHabitaciones(6);
+        propiedad.setPatio("Sí");
+        propiedad.setDireccion(direcciones.get(1));
+        propiedad.setBanios(7);
+        propiedad.setCocina("No");
+        propiedad.setEstacionamiento("Sí");
+        propiedad.setTerraza("No");
+        propiedad.setMuebles("Sí");
+        propiedad.setWifi("No");
+        propiedad.setNumeroAutos(1);
+
+        propiedades.add(propiedad);
+
+        propiedad = new Propiedad();
+
+        propiedad.setClaveCatastral("12345678900987640596");
+        propiedad.setNombre("Casa de bosque");
+        propiedad.setPrecio(375000.00);
+        propiedad.setOperacion("Venta");
+        propiedad.setDimensiones("2000");
+        propiedad.setHabitaciones(4);
         propiedad.setPatio("Sí");
         propiedad.setDireccion(direcciones.get(2));
+        propiedad.setBanios(3);
+        propiedad.setCocina("Sí");
+        propiedad.setEstacionamiento("Sí");
+        propiedad.setTerraza("No");
+        propiedad.setMuebles("Sí");
+        propiedad.setWifi("No");
+        propiedad.setNumeroAutos(1);
 
         propiedades.add(propiedad);
 
         propiedad = new Propiedad();
 
-        propiedad.setIdPropiedad(4);
-        propiedad.setNombre("Casa de montaña");
-        propiedad.setPrecio(400000);
-        propiedad.setOperacion("alquiler");
-        propiedad.setDimensiones("4000 m2");
-        propiedad.setHabitaciones(6);
-        propiedad.setPatio("No");
+        propiedad.setClaveCatastral("12345678900987653666");
+        propiedad.setNombre("Casa de bosque");
+        propiedad.setPrecio(375000.00);
+        propiedad.setOperacion("Venta");
+        propiedad.setDimensiones("500");
+        propiedad.setHabitaciones(2);
+        propiedad.setPatio("Sí");
         propiedad.setDireccion(direcciones.get(3));
+        propiedad.setBanios(3);
+        propiedad.setCocina("Sí");
+        propiedad.setEstacionamiento("Sí");
+        propiedad.setTerraza("No");
+        propiedad.setMuebles("Sí");
+        propiedad.setWifi("No");
+        propiedad.setNumeroAutos(1);
 
         propiedades.add(propiedad);
 
         propiedad = new Propiedad();
 
-        propiedad.setIdPropiedad(5);
+        propiedad.setClaveCatastral("09876543211234567890");
         propiedad.setNombre("Casa de lago");
-        propiedad.setPrecio(500000);
-        propiedad.setOperacion("venta");
-        propiedad.setDimensiones("5000 m2");
-        propiedad.setHabitaciones(7);
+        propiedad.setPrecio(800000.00);
+        propiedad.setOperacion("Venta");
+        propiedad.setDimensiones("2500");
+        propiedad.setHabitaciones(6);
         propiedad.setPatio("Sí");
         propiedad.setDireccion(direcciones.get(4));
+        propiedad.setBanios(3);
+        propiedad.setCocina("Sí");
+        propiedad.setEstacionamiento("Sí");
+        propiedad.setTerraza("No");
+        propiedad.setMuebles("Sí");
+        propiedad.setWifi("No");
+        propiedad.setNumeroAutos(4);
 
         propiedades.add(propiedad);
 
         propiedad = new Propiedad();
 
-        propiedad.setIdPropiedad(6);
+        propiedad.setClaveCatastral("00100200300400500607");
         propiedad.setNombre("Casa de río");
-        propiedad.setPrecio(600000);
-        propiedad.setOperacion("alquiler");
-        propiedad.setDimensiones("6000 m2");
-        propiedad.setHabitaciones(8);
-        propiedad.setPatio("No");
+        propiedad.setPrecio(400000.00);
+        propiedad.setOperacion("Venta");
+        propiedad.setDimensiones("500");
+        propiedad.setHabitaciones(6);
+        propiedad.setPatio("Sí");
         propiedad.setDireccion(direcciones.get(5));
+        propiedad.setBanios(3);
+        propiedad.setCocina("Sí");
+        propiedad.setEstacionamiento("Sí");
+        propiedad.setTerraza("No");
+        propiedad.setMuebles("Sí");
+        propiedad.setWifi("Sí");
+        propiedad.setNumeroAutos(1);
 
         propiedades.add(propiedad);
 
         propiedad = new Propiedad();
 
-        propiedad.setIdPropiedad(7);
+        propiedad.setClaveCatastral("12345678900987654321");
         propiedad.setNombre("Casa de bosque");
-        propiedad.setPrecio(700000);
-        propiedad.setOperacion("venta");
-        propiedad.setDimensiones("7000 m2");
-        propiedad.setHabitaciones(9);
+        propiedad.setPrecio(375000.00);
+        propiedad.setOperacion("Venta");
+        propiedad.setDimensiones("2000");
+        propiedad.setHabitaciones(4);
         propiedad.setPatio("Sí");
         propiedad.setDireccion(direcciones.get(6));
+        propiedad.setBanios(3);
+        propiedad.setCocina("Sí");
+        propiedad.setEstacionamiento("Sí");
+        propiedad.setTerraza("No");
+        propiedad.setMuebles("Sí");
+        propiedad.setWifi("No");
+        propiedad.setNumeroAutos(1);
 
         propiedades.add(propiedad);
 
         propiedad = new Propiedad();
 
-        propiedad.setIdPropiedad(8);
+        propiedad.setClaveCatastral("10111213141516171009");
         propiedad.setNombre("Casa de desierto");
-        propiedad.setPrecio(800000);
-        propiedad.setOperacion("alquiler");
-        propiedad.setDimensiones("8000 m2");
-        propiedad.setHabitaciones(10);
+        propiedad.setPrecio(900000.00);
+        propiedad.setOperacion("Alquiler");
+        propiedad.setDimensiones("1000");
+        propiedad.setHabitaciones(12);
         propiedad.setPatio("No");
         propiedad.setDireccion(direcciones.get(7));
+        propiedad.setBanios(1);
+        propiedad.setCocina("No");
+        propiedad.setEstacionamiento("Sí");
+        propiedad.setTerraza("No");
+        propiedad.setMuebles("No");
+        propiedad.setWifi("No");
+        propiedad.setNumeroAutos(2);
 
         propiedades.add(propiedad);
 
         propiedad = new Propiedad();
 
-        propiedad.setIdPropiedad(9);
+        propiedad.setClaveCatastral("91011121314151617181");
         propiedad.setNombre("Casa de pradera");
-        propiedad.setPrecio(900000);
+        propiedad.setPrecio(900000.00);
         propiedad.setOperacion("venta");
         propiedad.setDimensiones("9000 m2");
         propiedad.setHabitaciones(11);
         propiedad.setPatio("Sí");
         propiedad.setDireccion(direcciones.get(8));
+        propiedad.setBanios(2);
+        propiedad.setCocina("Sí");
+        propiedad.setEstacionamiento("Sí");
+        propiedad.setTerraza("Sí");
+        propiedad.setMuebles("Sí");
+        propiedad.setWifi("Sí");
+        propiedad.setNumeroAutos(3);
 
         propiedades.add(propiedad);
 
         propiedad = new Propiedad();
 
-        propiedad.setIdPropiedad(10);
+        propiedad.setClaveCatastral("10111213141516171819");
         propiedad.setNombre("Casa de selva");
-        propiedad.setPrecio(100000);
+        propiedad.setPrecio(100000.00);
         propiedad.setOperacion("alquiler");
         propiedad.setDimensiones("1000 m2");
         propiedad.setHabitaciones(12);
         propiedad.setPatio("No");
         propiedad.setDireccion(direcciones.get(9));
+        propiedad.setBanios(1);
+        propiedad.setCocina("No");
+        propiedad.setEstacionamiento("Sí");
+        propiedad.setTerraza("No");
+        propiedad.setMuebles("No");
+        propiedad.setWifi("No");
+        propiedad.setNumeroAutos(2);
 
         propiedades.add(propiedad);
     }

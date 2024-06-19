@@ -5,6 +5,7 @@ public class Cliente {
     private String nombre;
     private String apellidoPaterno;
     private String correoElectronico;
+    private String telefono;
     private String clave;
 
     public Cliente() {
@@ -34,6 +35,10 @@ public class Cliente {
     public String getClave() {
         return clave;
     }
+
+    public String getTelefono() {
+        return telefono;
+    }
     
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
@@ -53,5 +58,9 @@ public class Cliente {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }

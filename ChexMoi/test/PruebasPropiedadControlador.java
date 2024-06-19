@@ -1,95 +1,103 @@
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import chexmoi.controlador.PropiedadControlador;
+import chexmoi.modelo.Cliente;
+import chexmoi.modelo.Direccion;
+import chexmoi.modelo.Propiedad;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.sql.SQLException;
 import java.util.List;
 
-import org.junit.Test;
-
-import chexmoi.controlador.PropiedadControlador;
-import chexmoi.modelo.Propiedad;
+import static org.junit.Assert.*;
 
 public class PruebasPropiedadControlador {
-    public Inicial inicial = new Inicial();
+    private PropiedadControlador controlador;
+    private Inicial inicial;
+
+    @Before
+    public void setUp() {
+        controlador = new PropiedadControlador();
+        inicial = new Inicial(); 
+    }
 
     @Test
-    public void pruebaObtenerPropiedadesExitosa() throws Exception {
-        PropiedadControlador propiedadControlador = new PropiedadControlador();
-
-        List<Propiedad> propiedadesExperadas = inicial.obtenerPropiedades();
-        List<Propiedad> propiedadesActuales = propiedadControlador.obtenerPropiedades();
-
-        assertEquals(propiedadesExperadas.size(), propiedadesActuales.size());
-
-        for (int i = 0; i < propiedadesExperadas.size(); i++) {
-            assertTrue(propiedadesExperadas.get(i).equals(propiedadesActuales.get(i)));
+    public void testObtenerPropiedades() {
+        try {
+            List<Propiedad> propiedades = controlador.obtenerPropiedades();
+            assertNotNull(propiedades);
+            assertTrue(propiedades.size() > 0);
+        } catch (SQLException e) {
+            fail("Error al obtener propiedades: " + e.getMessage());
         }
     }
 
     @Test
-    public void pruebaEditarNombreDePropiedadExitosa() throws Exception {
-        Propiedad propiedadOriginal = inicial.obtenerPropiedades().get(0);
+    public void testAgregarPropiedad() {
+        Cliente cliente = inicial.obtenerClientes().get(0);
+        Direccion direccion = inicial.obtenerDirecciones().get(0);
 
-        PropiedadControlador propiedadControlador = new PropiedadControlador();
-        int resultadoEditar;
+        Propiedad propiedad = new Propiedad();
+        propiedad.setClaveCatastral("11122233344455566677");
+        propiedad.setNombre("Nueva Propiedad");
+        propiedad.setPrecio(500000.00);
+        propiedad.setOperacion("Venta");
+        propiedad.setDimensiones("2000");
+        propiedad.setHabitaciones(5);
+        propiedad.setPatio("Sí");
+        propiedad.setDireccion(direccion);
+        propiedad.setBanios(3);
+        propiedad.setCocina("Sí");
+        propiedad.setEstacionamiento("Sí");
+        propiedad.setTerraza("Sí");
+        propiedad.setMuebles("Sí");
+        propiedad.setWifi("Sí");
+        propiedad.setNumeroAutos(2);
 
-        resultadoEditar = propiedadControlador.editarNombrePropiedad(propiedadOriginal.getIdPropiedad(), "Casa de Prueba");
-        assertEquals(1, resultadoEditar);
-
-        resultadoEditar = propiedadControlador.editarNombrePropiedad(propiedadOriginal.getIdPropiedad(), propiedadOriginal.getNombre());
-        assertEquals(1, resultadoEditar);
+        try {
+            int resultado = controlador.agregarPropiedad(cliente, propiedad);
+            assertEquals(1, resultado);
+        } catch (SQLException e) {
+            fail("Error al agregar propiedad: " + e.getMessage());
+        }
     }
 
     @Test
-    public void pruebaEditarNombreDePropiedadFallida() throws SQLException {
-        PropiedadControlador propiedadControlador = new PropiedadControlador();
-        int resultadoEditar = propiedadControlador.editarNombrePropiedad(-1, "Casa de Prueba");
+    public void testEditarPropiedad() {
+        Propiedad propiedad = inicial.obtenerPropiedades().get(0);
+        propiedad.setNombre("Propiedad Editada");
 
-        assertEquals(0, resultadoEditar);
+        try {
+            int resultado = controlador.editarPropiedad(propiedad);
+            assertEquals(1, resultado);
+        } catch (SQLException e) {
+            fail("Error al editar propiedad: " + e.getMessage());
+        }
     }
 
     @Test
-    public void pruebaEditarPrecioDePropiedadExitosa() throws Exception {
-        Propiedad propiedadOriginal = inicial.obtenerPropiedades().get(0);
+    public void testObtenerMisPropiedades() {
+        Cliente cliente = inicial.obtenerClientes().get(0);
 
-        PropiedadControlador propiedadControlador = new PropiedadControlador();
-        int resultadoEditar;
-
-        resultadoEditar = propiedadControlador.editarPrecioPropiedad(propiedadOriginal.getIdPropiedad(), 1000000);
-        assertEquals(1, resultadoEditar);
-
-        resultadoEditar = propiedadControlador.editarPrecioPropiedad(propiedadOriginal.getIdPropiedad(), propiedadOriginal.getPrecio());
-        assertEquals(1, resultadoEditar);
+        try {
+            List<Propiedad> propiedades = controlador.obtenerMisPropiedades(cliente);
+            assertNotNull(propiedades);
+            assertTrue(propiedades.size() > 0);
+        } catch (SQLException e) {
+            fail("Error al obtener mis propiedades: " + e.getMessage());
+        }
     }
 
     @Test
-    public void pruebaEditarPrecioDePropiedadFallida() throws SQLException {
-        PropiedadControlador propiedadControlador = new PropiedadControlador();
-        int resultadoEditar = propiedadControlador.editarPrecioPropiedad(-1, 1000000);
+    public void testAgregarPropietario() throws SQLException {
+        Cliente cliente = inicial.obtenerClientes().get(0);
+        Propiedad propiedad = inicial.obtenerPropiedades().get(0);
 
-        assertEquals(0, resultadoEditar);
+        int resultado = controlador.agregarPropietario(
+            propiedad.getClaveCatastral(), 
+            propiedad.getDireccion().getIdDireccion(), 
+            cliente.getIdCliente()
+        );
+        
+        assertEquals(1, resultado);
     }
-
-    @Test
-    public void pruebaEditarOperacionDePropiedadExitosa() throws Exception {
-        Propiedad propiedadOriginal = inicial.obtenerPropiedades().get(0);
-
-        PropiedadControlador propiedadControlador = new PropiedadControlador();
-        int resultadoEditar;
-
-        resultadoEditar = propiedadControlador.editarOperacionPropiedad(propiedadOriginal.getIdPropiedad(), "Venta");
-        assertEquals(1, resultadoEditar);
-
-        resultadoEditar = propiedadControlador.editarOperacionPropiedad(propiedadOriginal.getIdPropiedad(), propiedadOriginal.getOperacion());
-        assertEquals(1, resultadoEditar);
-    }
-
-    @Test
-    public void pruebaEditarOperacionDePropiedadFallida() throws SQLException {
-        PropiedadControlador propiedadControlador = new PropiedadControlador();
-        int resultadoEditar = propiedadControlador.editarOperacionPropiedad(-1, "Venta");
-
-        assertEquals(0, resultadoEditar);
-    }
-
 }

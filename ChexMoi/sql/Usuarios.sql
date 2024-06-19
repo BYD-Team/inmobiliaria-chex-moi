@@ -1,3 +1,4 @@
+-- SQLBook: Code
 -- DROP DATABASE chexmoi;
 
 CREATE USER 'usuario_chexmoi'@'%' IDENTIFIED BY 'u$9Hxt7Wc*';

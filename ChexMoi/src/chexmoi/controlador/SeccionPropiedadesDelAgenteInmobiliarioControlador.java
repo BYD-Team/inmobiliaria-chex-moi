@@ -94,7 +94,7 @@ public class SeccionPropiedadesDelAgenteInmobiliarioControlador {
         contenedor.setAlignment(Pos.CENTER);
         contenedor.getChildren().add(crearEtiqueta(propiedad.getDimensiones(), 14));
         contenedor.getChildren().add(crearSeparador());
-        contenedor.getChildren().add(crearBotonEditar(propiedad));
+        contenedor.getChildren().add(crearBotonVerDetalles(propiedad));
 
         propiedadElemento.setSpacing(10);
         propiedadElemento.setMinWidth(400);
@@ -123,31 +123,31 @@ public class SeccionPropiedadesDelAgenteInmobiliarioControlador {
         return separador;
     }
 
-    private Button crearBotonEditar(Propiedad propiedad) {
-        Button botonEditar = new Button("Editar");
+    private Button crearBotonVerDetalles(Propiedad propiedad) {
+        Button botonEditar = new Button("Ver Detalles");
 
         botonEditar.setStyle("-fx-text-fill: #fff; -fx-background-color: transparent; -fx-border-color: #fff;");
 
         botonEditar.setOnAction(event ->{
-            abrirEditarPropiedad(propiedad);
+            abrirVerDetalles(propiedad);
         });
 
         return botonEditar;
     }
 
-    private void abrirEditarPropiedad(Propiedad propiedad) {
+    private void abrirVerDetalles(Propiedad propiedad) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../vista/VentanaEditarPropiedad.fxml"));
             Parent ventanaEditarPropiedad = loader.load();
 
-            VentanaEditarPropiedadControlador controlador = loader.getController();
-            controlador.setPropiedad(propiedad);
+            VentanaVerDetallesControlador controlador = loader.getController();
+            controlador.setPropiedad(propiedad, propiedad.getDireccion());
 
             Scene scene = new Scene(ventanaEditarPropiedad);
             Stage stage = new Stage();
 
             stage.setScene(scene);
-            stage.setTitle("Editar Propiedad");
+            stage.setTitle("Detalles de la propiedad");
 
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(resultadoBusqueda.getScene().getWindow());
